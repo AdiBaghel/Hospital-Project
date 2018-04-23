@@ -28,6 +28,18 @@
 <script src="GlobalURL.js"></script>
 <script type="text/javascript" src="showAndHideForm.js"></script>
 <link rel="stylesheet" href="upload.css">
+ <script src="three.js"></script> 
+		<script src="OBJLoader.js"></script>
+		<script src="OrbitControls.js"></script>
+		<!-- <script src='js/libs/dat.gui.min.js'></script> -->
+		<!-- R download this and add this library  dat.gui.js-->
+		<script src='guicontrol.js'></script>
+	    <script src="Projector.js"></script>
+		<!-- <!-- R download this and add this library  stats.js from books--> 
+		<!-- <script type="text/javascript" src="rahulstats.js"></script> -->
+		<!-- R download from stemkoski -->
+		<script src="jquery-1.9.1.js"></script>
+        <script src="jquery-ui.js"></script>
 <link href="bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -575,7 +587,7 @@
 											ng-model="ctrl.myData2.bleedingFromNose" ng-true-value="true"
 											ng-false-value="false" /> Nose </label>
 									</div>
-									<!-- bleedingfrom division closed -->
+									<!-- bleeding from division closed -->
 								</div>
 								<div class="col-xs-6">
 
@@ -624,7 +636,7 @@
 				<div class="col-xs-5">
 					<label style="padding-left: 40px;"><h4>Airway on
 							arrival:</h4></label> <br>
-					<p>
+					
 						<span class="segmented"> <label><input type="radio"
 								name="airway" id="type-c"
 								ng-model="ctrl.myData2.airwayOnArrival" value="Clear"><span
@@ -634,13 +646,13 @@
 								value="Requires Intubation"><span class="label">Requires
 									Intubation</span></label>
 						</span>
-					</p>
+					
 				</div>
 				<div class="col-xs-7">
 					<label style="padding-left: 80px;"><h4>Spontaneous
 							Respiration:</h4></label>
 
-					<p>
+					
 						<span class="segmented"> <label><input type="radio"
 								name="Spontaneous" id="type-c"
 								ng-model="ctrl.myData2.spontaneousRespiration" value="Normal"><span
@@ -652,7 +664,7 @@
 								ng-model="ctrl.myData2.spontaneousRespiration" value="Gasping"><span
 								class="label">Gasping</span></label>
 						</span>
-					</p>
+					
 				</div>
 			</div>
 			<div>
@@ -1044,6 +1056,14 @@
 
 							</div>
 						</div>
+						<div>
+						<br>
+						<button type="button" id="model" href="#f5" onClick="javascript:showModel1();showModel();" class="btn btn-info" >Model</button>
+					<span id="modtext" ng-model="ctrl.myData2.modeldata"></span>
+					</div>
+					
+					
+					
 					</div>
 					<!-- touchpad closed -->
 				</div>
@@ -1962,8 +1982,6 @@
 						</div>
 					</div>
 				</div>
-
-
 				<div class="form-group ">
 					<label class="control-label col-sm-5" style="text-align: left">Management
 						Plan (in Hospital):</label>
@@ -2075,7 +2093,23 @@
 		</div>
 	</div>
 	<!-- **********************************************Clinical Form Complete****************************************** -->
-
+	<div id="f5" style="display:none;font-family: Monospace;
+				background-color: #000;
+				color: #fff;
+				margin: 0px;
+				overflow: hidden;">	
+		<div id="info">
+		<div id="Stats-output">		
+		</div>     
+		<div  id="output" style="position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 460px;
+	height: 500px;">
+	<button type="button" onClick="javascript:showPhysical();" class="btn btn-info" >Submit</button>
+		</div>		
+		</div>
+	</div>
 	</div>
 </body>
 </html>

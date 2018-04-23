@@ -6,17 +6,18 @@
 		var self = this;
 		startUpFuctions();
 		function startUpFuctions(){
-			getIds();
 			processParam();
 			self.pid = l;
+			getIds(l);
 			dbDataPostSvc.getPatientbyId(l).then(function(data) {
 				self.pData1=data;
 				console.log(self.pData1);
 			});
 		}
 
-		function getIds(){ 
-			dbDataPostSvc.getEncounterId().then(function(data){
+		function getIds(pid){
+			console.log("hello");
+			dbDataPostSvc.getEncounterId(pid).then(function(data){
 				self.myData=data;
 				console.log(self.myData)
 				addContact();
@@ -266,6 +267,7 @@
 			} 
 			else if(formID=='form2'){
 				self.myData2.closedFlag=1;
+				console.log(self.myData2.modeldata);
 				var physicalData= angular.toJson(self.myData2);
 
 				dbDataPostSvc.createPhysical(physicalData)
@@ -322,7 +324,7 @@
 				});
 			}
 
-			if(self.myData1.closedFlag==1 && self.myData2.closedFlag==1 && self.myData3.closedFlag==1 && self.myData4.closedFlag==1)
+			if(self.myData1.closedFlag==1 || self.myData2.closedFlag==1 || self.myData3.closedFlag==1 || self.myData4.closedFlag==1)
 			{
 				self.myData.closedFlag=1;
 				self.myData.closeDate = new Date();

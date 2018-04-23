@@ -33,17 +33,46 @@ public class EncounterDatabaseAccess extends EncounterAbstractDatabaseAccess{
 	ArrayList<Encounter> eList;
 	
 
-	public EncounterId generateNewId() {
-
-		EncounterId ei = new EncounterId();
-		IdFactoryUse idFactoryUse = new IdFactoryUse();
-		// get an object of IdGeneration
-		IdGeneration idgen = idFactoryUse.getIdObj("NIMHANS");
-		// call getNewId() method on IdGeneration
-		//System.out.println("id generation in idFactoryDemo" + idgen.getNewId());
-		ei = idgen.getNewId(); // constructor called
-		return ei;
-	}
+	public EncounterId generateNewId(String pid) {
+		String eid = "";
+		try {
+			System.out.println(pid);
+			con = db.getConnection();
+			String sqlQuery = "Select eid from encounter where closed_flag = ? and pid=?";
+			pstmt = con.prepareStatement(sqlQuery);
+			pstmt.setBoolean(1,false);
+			pstmt.setString(2, pid);		
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				eid = rs.getString("eid");
+				eid = eid.substring(1,eid.length());
+				System.out.println(eid);
+				String encounterId;
+				String phyEncounterId;
+				String patEncounterId;
+				String neuEncounterId;
+				String cliEncounterId;
+				encounterId="E"+eid;
+				phyEncounterId="Ep"+eid;
+				patEncounterId="Epd"+eid;
+				neuEncounterId="Ene"+eid;
+				cliEncounterId="Ec"+eid;
+				EncounterId eold = new EncounterId(encounterId,phyEncounterId ,patEncounterId ,neuEncounterId ,cliEncounterId );
+				return eold;
+			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+			EncounterId ei = new EncounterId();
+				IdFactoryUse idFactoryUse = new IdFactoryUse();
+				// get an object of IdGeneration
+				IdGeneration idgen = idFactoryUse.getIdObj("NIMHANS");
+				// call getNewId() method on IdGeneration
+				//System.out.println("id generation in idFactoryDemo" + idgen.getNewId());
+				ei = idgen.getNewId(); // constructor called
+				return ei;
+		}
 	
 	public List<EncounterPatientDetails> getEncounterPatientDetailsById(String eid) {
 		try {
@@ -176,19 +205,72 @@ public class EncounterDatabaseAccess extends EncounterAbstractDatabaseAccess{
 		try {
 			con = db.getConnection();
 			System.out.println(con);
+			String sqlQuery1 = "select closed_flag from encounter_clinical_impression where eid=?";
+			String sqlQuery2 = "select closed_flag from encounter_neurological_examination where eid=?";
+			String sqlQuery3 = "select closed_flag from encounter_patient_details where eid=?";
+			String sqlQuery4 = "select closed_flag from encounter_physical_examination where eid=?";
+			boolean v1 = false;
+			boolean v2 = false;
+			boolean v3 = false;
+			boolean v4 = false;
+			
+			pstmt  = con.prepareStatement(sqlQuery1);
+			pstmt.setString(1, eParent.getEid());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				 v1 = rs.getBoolean("closed_flag");
+			}
+			
+			pstmt  = con.prepareStatement(sqlQuery2);
+			pstmt.setString(1, eParent.getEid());
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				 v2 = rs.getBoolean("closed_flag");
+			}
+			
+			pstmt  = con.prepareStatement(sqlQuery3);
+			pstmt.setString(1, eParent.getEid());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				 v3 = rs.getBoolean("closed_flag");
+			}
+			pstmt  = con.prepareStatement(sqlQuery4);
+			pstmt.setString(1, eParent.getEid());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				 v4 = rs.getBoolean("closed_flag");
+			}
+			
+			System.out.println(v1+" "+v2+" "+v3+" "+v4+" ");
+			if(v1 && v2 && v3 && v4) {
+				String sqlQuery = "update encounter set close_date=?, closed_flag=? where eid=?";
+				eList = new ArrayList<Encounter>();
+				System.out.println("In update Parent");
+				pstmt = con.prepareStatement(sqlQuery);
+				pstmt.setDate(1, eParent.getCloseDate());
+				pstmt.setBoolean(2, eParent.getClosedFlag());
+				pstmt.setString(3, eParent.getEid());
 
-			String sqlQuery = "update encounter set close_date=?, closed_flag=? where eid=?";
-			eList = new ArrayList<Encounter>();
-			System.out.println("In update Parent");
-			pstmt = con.prepareStatement(sqlQuery);
-			pstmt.setDate(1, eParent.getCloseDate());
-			pstmt.setBoolean(2, eParent.getClosedFlag());
-			pstmt.setString(3, eParent.getEid());
-
-			System.out.println("closeDate " + eParent.getCloseDate());
-			int i = pstmt.executeUpdate();
-			System.out.println(epList.get(0));
-			return eList;
+				System.out.println("closeDate " + eParent.getCloseDate());
+				int i = pstmt.executeUpdate();
+				System.out.println(epList.get(0));
+				return eList;
+			}
+			else {
+				String sqlQuery = "update encounter set close_date=?, closed_flag=? where eid=?";
+				eList = new ArrayList<Encounter>();
+				System.out.println("In update Parent");
+				pstmt = con.prepareStatement(sqlQuery);
+				pstmt.setDate(1,null);
+				pstmt.setBoolean(2,false);
+				pstmt.setString(3, eParent.getEid());
+				System.out.println("closeDate " + eParent.getCloseDate());
+				int i = pstmt.executeUpdate();
+				System.out.println(epList.get(0));
+				return eList;
+			}
+						
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("In catch - " + e.getMessage());

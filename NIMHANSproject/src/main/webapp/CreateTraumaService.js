@@ -34,8 +34,10 @@
 						}
 */
 						
-						self.getEncounterId=function(){    
-						     var promise1=$http.get("http://"+serverURL+"/NIMHANSproject/Services/encounterAction/getNewId");
+						self.getEncounterId=function(pid){
+							 var p0 = pid;
+							 console.log("in create trauma service"+p0);
+						     var promise1=$http.get("http://"+serverURL+"/NIMHANSproject/Services/encounterAction/getNewId/"+p0);
 						     var promise2=promise1.then(function(response){
 						     console.log(response.data);
 						     return response.data;

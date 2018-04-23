@@ -25,3 +25,12 @@ function showIncident(){
 	  document.getElementById('f3').style.display ='none';
 	  document.getElementById('f2').style.display ='none';
 }
+
+function showModel(){
+	  document.getElementById('f4').style.display ='none';
+	  document.getElementById('f1').style.display ='none';
+	  document.getElementById('f3').style.display ='none';
+	  document.getElementById('f2').style.display ='none';
+	  document.getElementById('f5').style.display ='block';
+	  
+}

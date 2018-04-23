@@ -171,12 +171,13 @@ public class EncounterService {
 
 	}
 
-	@Path("/getNewId")
+	@Path("/getNewId/{pid}")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public EncounterId getNewId() {
+	public EncounterId getNewId(@PathParam("pid") String pid) {
+		System.out.println("in encounter service"+pid);
 		EncounterId ei = new EncounterId();
-		ei = eda.generateNewId();
+		ei = eda.generateNewId(pid);
 		System.out.println("New Id is"+ei);
 		return ei;
 	}
