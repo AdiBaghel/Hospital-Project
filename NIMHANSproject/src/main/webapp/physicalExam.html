@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html ng-app="createTrauma">
+<head>
+<script src="angular.js"></script>
+<script src="signature_pad.min.js"></script>
+<script src="signature.js"></script>
+<script src="upload.js"></script>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+<script src="bootstrap/js/jquery-3.1.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="physical.js"></script>
+<script src="ng-file-upload-bower-12.2.13/ng-file-upload-shim.min.js"></script>
+<script src="ng-file-upload-bower-12.2.13/ng-file-upload.min.js"></script>
+<script src="CreateTraumaApp.js"></script>
+<script src="CreateTraumaController.js"></script>
+<script src="CreateTraumaService.js"></script>
+<script src="GlobalURL.js"></script>
+<link rel="stylesheet" href="upload.css">
+<link href="bootstrap/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/flick/jquery-ui.css">
+<link rel="stylesheet" href="bootstrap/css/slider.css">
+<script src="bootstrap/js/slider.js"></script>
+
+</head>
+<body>
+	<div class="header">
+		<div class="row">
+			<div class="col-sm-1">
+				<img src="images/nms.jpg" height="10%">
+			</div>
+			<div class="col-sm-9" id="Heading">
+				<h1>National Institute Of Mental Health And Neurosciences</h1>
+			</div>
+		</div>
+	</div>
+
+	<div class="collapse navbar-collapse" id="navbar"
+		ng-controller="dbDataPostCtrl as ctrl">
+		<a class="col-xs-1 col-sm-1" href="doctorHome.jsp" id="Home">Home</a>
+		<a href=""
+			ng-href="incidentDetails.jsp?pid={{ctrl.pid}}&dname={{ctrl.dname}}"
+			class="col-xs-2 col-sm-2">Incident Details</a> <a href=""
+			ng-href="physicalExam.html?pid={{ctrl.pid}}&dname={{ctrl.dname}}"
+			class="col-xs-2 col-sm-2 active">Physical Examination</a> <a href=""
+			ng-href="NeurologicalExam.html?pid={{ctrl.pid}}&dname={{ctrl.dname}}"
+			class="col-xs-3 col-sm-3">Neurological Examination</a> <a href=""
+			ng-href="ClinicalExam.html?pid={{ctrl.pid}}&dname={{ctrl.dname}}"
+			class="col-xs-2 col-sm-2">Clinical Examination</a>
+		<ul class="nav navbar-right navbar-nav col-xs-2 col-sm-2"
+			style="color: #f2f2f2; text-align: center;">
+			<li class="dropdown"><a href="" ng-href="#"
+				class="dropdown-toggle" data-toggle="dropdown"
+				style="overflow: hidden;"><i class="fa fa-user"></i>
+					Dr.{{ctrl.dname}} <b class="caret"></b></a>
+				<ul class="dropdown-menu" style="background-color: #000000">
+					<li><a href="#"><i class="fa fa-fw fa-user"></i> Profile</a></li>
+					<li><a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a></li>
+					<li class="divider"></li>
+					<li><a href="LogoutServlet"><i
+							class="fa fa-fw fa-power-off"></i> Log Out</a></li>
+				</ul></li>
+		</ul>
+	</div>
+
+	<div style="height: 2px"></div>
+	<div ng-controller="dbDataPostCtrl as ctrl" style="padding-top: 2px;"
+		class="collapse navbar-collapse" id="navbar1">
+		<div class="col-xs-4" style="align: left">
+			<strong>Patient Name:</strong> <label style="text-align: left">{{ctrl.pData1.pname}}</label>
+			&nbsp;
+		</div>
+		<div class="col-xs-4" style="align: centre">
+			<strong>Patient Age :</strong> <label style="text-align: centre">{{ctrl.pData1.age}}</label>
+			&nbsp;
+		</div>
+		<div class="col-xs-4" style="align: right">
+			<strong>Patient Gender:</strong> <label style="text-align: right">{{ctrl.pData1.gender}}</label>
+			&nbsp;
+		</div>
+	</div>
+
+	<br>
+
+	<div class="col-sm-1 container-fluid"></div>
+	<div id="physicalForm" class="col-sm-10 container-fluid">
+	<form class="form-horizontal" ng-controller="dbDataPostCtrl as ctrl">
+		<div class="borders col-xs-9">
+			<label style="padding-top: 10px; padding-left: 270px"><b><h3>History
+						of injury in detail:</h3></b></label>
+				<div class="form-group">
+					<div>
+						<div class="col-xs-6">
+							<div>
+								<label> <input type="checkbox"
+									ng-model="ctrl.myData2.lossOfConsciousness"
+									ng-true-value="true" ng-false-value="false" />Loss Of
+									Consciousness
+								</label>
+							</div>
+
+							<br>
+
+							<div>
+								<label> <input type="checkbox"
+									ng-model="ctrl.myData2.lucidInterval" ng-true-value="true"
+									ng-false-value="false">Lucid Interval
+								</label>
+							</div>
+							<br>
+
+							<div>
+								<label><input type="checkbox"
+									ng-model="ctrl.myData2.seizures" ng-true-value="true"
+									ng-false-value="false" />Seizures</label>
+							</div>
+							<!-- seizure division closed -->
+
+							<br>
+
+							<div>
+
+								<label> <input type="checkbox"
+									ng-model="ctrl.myData2.vomiting" ng-true-value="true"
+									ng-false-value="false" />Vomiting
+								</label>
+
+							</div>
+							<!-- vomiting division closed -->
+
+							<br>
+
+							<div>
+								<label> <input type="checkbox"
+									ng-model="ctrl.myData2.amnesia" ng-true-value="true"
+									ng-false-value="false" />Amnesia
+								</label>
+
+							</div>
+							<!-- amnesia division closed -->
+
+							<br>
+
+							<div>
+								<label>Bleeding from: </label> <label> <input
+									type="checkbox" ng-model="ctrl.myData2.bleedingFromEar"
+									ng-true-value="true" ng-false-value="false" /> Ear
+								</label> <label><input type="checkbox"
+									ng-model="ctrl.myData2.bleedingFromNose" ng-true-value="true"
+									ng-false-value="false" /> Nose </label>
+							</div>
+							<!-- bleedingfrom division closed -->
+						</div>
+						<div class="col-xs-6">
+							<div class="container-fluid" data-ng-init="pbtnId1='pt1';">
+								<div style="padding-left: 100px;">
+									<button type="button" class="btn btn-info"
+										data-ng-attr-id="pbtnId1"
+										ng-click="ctrl.showTextarea(pbtnId1)">Textarea</button>
+									<button type="button" class="btn btn-info"
+										data-ng-attr-id="pbtnId1"
+										ng-click="ctrl.showTouchpad(pbtnId1)">Touchpad</button>
+								</div>
+								<div class="col-sm-6">
+									<textarea
+										ng-show="!ctrl.myData2.historyOfInjuryCommon;"
+										class="form-control" rows="5" id="neurolo"
+										ng-model="ctrl.myData2.historyOfInjuryCommon"
+										placeholder="Description" style="width: 100%"></textarea>
+								</div>
+								<div
+									ng-show="ctrl.myDat2.historyOfInjuryCommon;">
+									<div ng-controller="MyCtrl as ctrl2"
+										class="modal-body col-sm-12"
+										ng-style="{'max-width': boundingBox.width + 'px', 'max-height': boundingBox.height + 'px'}">
+										<signature-pad accept="accept"
+											style="border: 1px solid black;" clear="clear" height="220"
+											width="350" dataurl="dataurl"></signature-pad>
+										<span ng-hide="true">{{ctrl.ptouch1=dataurl}}</span>
+										<div class="buttons">
+											<button type="button" class="btn btn-default"
+												ng-click="clear()">Clear</button>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					<br>
+				</div>
+		</div>
+		<div class="borders col-xs-9">
+			<div class="col-xs-12">
+
+				<label style="padding-top: 10px; padding-left: 270px"><h3>Vital
+						signs on arrival:</h3></label> <br>
+				<div class="col-xs-5">
+					<label style="padding-left: 40px;"><h4>Airway on
+							arrival:</h4></label> <br>
+					<p>
+						<span class="segmented">
+						 <label><input type="radio"name="airway" id="type-c" ng-model="ctrl.myData2.airwayOnArrival" value="Clear"><span class="label">clear</span></label> 
+						 <label><input type="radio" name="airway" id="type-r" ng-model="ctrl.myData2.airwayOnArrival" value="Requires Intubation"><span class="label">Requires Intubation</span></label>
+						</span>
+					</p>
+				</div>
+				<div class="col-xs-7">
+					<label style="padding-left: 80px;"><h4>Spontaneous
+							Respiration:</h4></label>
+
+					<p>
+						<span class="segmented"> 
+						<label><input type="radio"name="Spontaneous"id="type-c" ng-model="ctrl.myData2.spontaneousRespiration" value="Normal" ><span class="label">Normal</span></label> 
+						<label><input type="radio" name="Spontaneous"id="type-r" ng-model="ctrl.myData2.spontaneousRespiration" value="Tachypnoeic"><span class="label">Tachypnoeic</span></label>
+							<label><input type="radio" name="Spontaneous" id="type-g" ng-model="ctrl.myData2.spontaneousRespiration" value="Gasping"><span
+								class="label">Gasping</span></label>
+						</span>
+					</p>
+				</div>
+			</div>
+			<div>
+				<label><h4>Carotid Pulsations:</h4></label>
+			</div>
+			<div class="col-xs-12">
+				<div class="col-xs-6">
+					<label style="padding-left: 100px;"><h5>
+							<b>LEFT</b>
+						</h5></label>
+					<div>
+						<p>
+							<span class="segmented"> <label><input
+									type="radio" name="lp"value="Present"ng-model="ctrl.myData2.carotidPulsationLeft"><span class="label">Present</span></label>
+								<label><input type="radio" name="lp"value="Absent"ng-model="ctrl.myData2.carotidPulsationLeft"><span
+									class="label">Absent</span></label>
+							</span>
+						</p>
+					</div>
+				</div>
+				<div class="col-xs-6">
+					<label style="padding-left: 100px;"><h5>
+							<b>RIGHT</b>
+						</h5></label>
+					<div>
+						<span class="segmented"> <label><input type="radio"
+								name="rp"value="Present"ng-model="ctrl.myData2.carotidPulsationRight"><span class="label">Present</span></label> <label><input
+								type="radio" name="rp"value="Absent"ng-model="ctrl.myData2.carotidPulsationRight"><span class="label"value="Absent">Absent</span></label>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="borders col-xs-9">
+			<div>
+				<div class=" col-xs-12"><label><strong>Pulse Rate(/min):</strong></label></div>
+				<div class="col-xs-12">
+					<div class="col-xs-2" style="padding-top:25px;">
+						<input type="text" id="pulse" ng-model="ctrl.myData2.pulseRrate " size="5">
+					</div>
+					<div class="col-xs-10" style="padding-top:30px;padding-bottom:50px;">
+							<div style="width: 95%;" id="alternating-slider1"></div>
+							<script>
+							$( function() {
+								$("#alternating-slider1").slider({
+									max : 300,
+									values : [0],
+								slide: function( event, ui ) {
+							        $( "#pulse" ).val( ui.values[0] );
+							      }
+								}).slider("pips", {
+									step : 10,
+									rest : "label",
+									labels : {
+										first : "0",
+										last : "300"
+									}
+								}).slider("float");
+								$( "#pulse" ).val( $( "#alternating-slider1" ).slider( "values", 0 ) );
+							});
+							</script>
+						</div>
+				 </div>
+				</div>
+		</div>
+		<div class="borders col-xs-9">
+			<div>
+				<div class=" col-xs-12"><label><strong>Blood Pressure on Arrival(/mmHg):</strong></label></div>
+				
+					<div class="col-xs-2" style="padding-top:15px;"><label>Systolic</label></div>
+					<div class="col-xs-12">
+					<div class="col-xs-2" style="padding-top:25px;">
+						<input type="text" id="slid2"ng-model="ctrl.myData2.bpOnArrivalSystolic" size="5">
+					</div>
+					<div class="col-sm-10" style="padding-top:30px;padding-bottom:50px;">
+							<div style="width: 95%;" id="alternating-slider2"></div>
+							<script>
+							$( function() {
+								$("#alternating-slider2").slider({
+									max : 300,
+									values : [0],
+								slide: function( event, ui ) {
+							        $( "#slid2" ).val( ui.values[0] );
+							      }
+								}).slider("pips", {
+									step : 10,
+									rest : "label",
+									labels : {
+										first : "0",
+										last : "300"
+									}
+								}).slider("float");
+								$( "#slid2" ).val( $( "#alternating-slider2" ).slider( "values", 0 ) );
+							});
+							</script>
+						</div>
+				 </div>
+				
+					<div class="col-xs-2" style="padding-top:15px;"><label>Dystolic</label></div>
+					 <div class="col-xs-12">
+					 <div class="col-xs-2" style="padding-top:25px;">
+						<input type="text" id="slid3"ng-model="ctrl.myData2.bpOnArrivalDystolic" size="5">
+					</div>
+					<div class="col-sm-10" style="padding-top:30px;padding-bottom:50px;">
+							<div style="width: 95%;" id="alternating-slider3"></div>
+							<script>
+							$( function() {
+								$("#alternating-slider3").slider({
+									max : 300,
+									values : [0],
+								slide: function( event, ui ) {
+							        $( "#slid3" ).val( ui.values[0] );
+							      }
+								}).slider("pips", {
+									step : 10,
+									rest : "label",
+									labels : {
+										first : "0",
+										last : "300"
+									}
+								}).slider("float");
+								$( "#slid3" ).val( $( "#alternating-slider3" ).slider( "values", 0 ) );
+							});
+							</script>
+						</div>
+				 </div>
+			</div>
+			</div>
+			<div class="borders col-xs-9">
+			<div class="container-fluid">
+				<div class=" col-xs-12"><label><strong>Blood Pressure after half hour(/mmHg):</strong></label></div>
+				
+					<div class="col-xs-2" style="padding-top:25px;padding-right:10px;"><label>Systolic</label></div>
+					<div class="col-xs-12">
+					<div class="col-xs-2" style="padding-top:25px;">
+						<input type="text" id ="slid4"ng-model="ctrl.myData2.bpAfterHalfHourSystolic" size="5">
+					</div>
+					<div class="col-sm-10" style="padding-top:30px;padding-bottom:50px;">
+							<div style="width: 95%;" id="alternating-slider4"></div>
+							<script>
+							$( function() {
+								$("#alternating-slider4").slider({
+									max : 300,
+									values : [0],
+								slide: function( event, ui ) {
+							        $( "#slid4" ).val( ui.values[0] );
+							      }
+								}).slider("pips", {
+									step : 10,
+									rest : "label",
+									labels : {
+										first : "0",
+										last : "300"
+									}
+								}).slider("float");
+								$( "#slid4" ).val( $( "#alternating-slider4" ).slider( "values", 0 ) );
+							});
+							</script>
+						</div>
+				 </div>
+				 
+					<div class="col-xs-2" style="padding-top:25px;"><label>Dystolic</label></div>
+					<div class="col-xs-12">
+					<div class="col-xs-2" style="padding-top:25px;">
+						<input type="text" id="slid5"ng-model="ctrl.myData2.bpAfterHalfHourDystolic" size="5" value="0">
+					</div>
+					<div class="col-sm-10" style="padding-top:30px;padding-bottom:50px;">
+							<div style="width: 95%;" id="alternating-slider5"></div>
+							<script>
+							$( function() {
+								$("#alternating-slider5").slider({
+									max : 300,
+									values : [0],
+								slide: function( event, ui ) {
+							        $( "#slid5" ).val( ui.values[0] );
+							      }
+								}).slider("pips", {
+									step : 10,
+									rest : "label",
+									labels : {
+										first : "0",
+										last : "300"
+									}
+								}).slider("float");
+								$( "#slid5" ).val( $( "#alternating-slider5" ).slider( "values", 0 ) );
+							});
+							</script>
+						</div>
+				 </div>
+			</div>
+			</div>
+
+			
+
+
+
+		<div class="borders col-xs-9">
+			<div class="form-group col-sm-12">
+				<label class="control-label col-sm-12" style="text-align: left">Systemic
+					Examination:</label>
+					<div class="col-xs-12">
+					
+				<div style="padding-top:10px">
+				<span class="segmented"> 
+				<label><input name="csf" id="type-r" value="Rhinorrhoea" type="radio" ng-model="ctrl.myData2.csf" ><span class="label">Rhinorrhoea</span></label> 
+				<label><input name="csf" id="type-o" value="Otorrhoea" type="radio" ng-model="ctrl.myData2.csf"><span class="label">Otorrhoea</span></label>
+				<label><input name="csf" id="type-b" value="Both" type="radio" ng-model="ctrl.myData2.csf"><span class="label">Both</span></label>
+				</span>
+					
+				</div>
+				<!-- csf division closed -->
+                  <div class="col-xs-6">
+				<div class="col-xs-10" style="padding-top: 20px">
+
+					<div>
+						<label><input type="checkbox" id="type-apb"
+							value="Active peripheral Bleeding"ng-model="ctrl.myData2.activePeripheralBleeding"
+							/>Active peripheral
+							Bleeding</label>
+							</div>
+
+					<div>
+						<label> <input type="checkbox" id="type-fracture"
+							value="Fractures"ng-model="ctrl.myData2.fractures" />Fractures
+						</label>
+						</div>
+					<div>
+						<label><input type="checkbox" id="type-pp"
+							value="Peripheral Pulses"ng-model="ctrl.myData2.peripheralPulses"
+							/>Peripheral Pulses</label>
+						
+					</div>
+					
+					<!--peripheral pulses division closed -->
+
+					<div>
+						<label><input type="checkbox" id="type-ci"
+							value="Chest Injury"ng-model="ctrl.myData2.chestInjury"/>Chest Injury</label>
+						</div>
+					<!-- chest injury division closed -->
+
+					<div>
+						<label><input type="checkbox" id="type-ai"
+							value="Abdominal Injury" ng-model="ctrl.myData2.abdominalInjury"  />Abdominal Injury</label>
+						
+					</div>
+					<!-- abdominal injury division closed -->
+
+					<div>
+						<label><input type="checkbox" id="type-w"
+							value="Wounds" ng-model="ctrl.myData2.wounds" />Wounds</label>
+						
+				</div>
+				<!-- wounds division closed -->
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-12" style="text-align: left">Details
+					Of Spine Examination:</label>
+				<div>
+					<label class="radio-inline"> <input type="checkbox"
+						id="type-t" value="Spinal Tenderness"ng-model="ctrl.myData2.spinalTenderness"
+						 /><b>Spinal Tenderness </label>
+				</div>
+
+				<div>
+					<label class="radio-inline"> <input type="checkbox"
+						id="type-d" value="Spinal Deformity"ng-model="ctrl.myData2.spinalDeformity"
+						 /><b>Spinal Deformity </label>
+				</div>
+				</div>
+                 </div>
+				<div class="col-xs-6">
+							<div class="container-fluid" data-ng-init="pbtnId2='pt2';">
+								<div style="padding-left: 100px;">
+									<button type="button" class="btn btn-info"
+										data-ng-attr-id="pbtnId2"
+										ng-click="ctrl.showTextarea(pbtnId2)">Textarea</button>
+									<button type="button" class="btn btn-info"
+										data-ng-attr-id="pbtnId2"
+										ng-click="ctrl.showTouchpad(pbtnId2)">Touchpad</button>
+								</div>
+								<div class="col-sm-7">
+									<textarea
+										ng-show="!ctrl.myData2.systemicExaminationCommon;"
+										class="form-control" rows="5" id="neurolo"
+										ng-model="ctrl.myData2.systemicExaminationCommon"
+										placeholder="Description" style="width: 100%"></textarea>
+								</div>
+								<div
+									ng-show="ctrl.myData2.systemicExaminationCommon;">
+									<div ng-controller="MyCtrl as ctrl2"
+										class="modal-body col-sm-12"
+										ng-style="{'max-width': boundingBox.width + 'px', 'max-height': boundingBox.height + 'px'}">
+										<signature-pad accept="accept"
+											style="border: 1px solid black;" clear="clear" height="220"
+											width="300" dataurl="dataurl"></signature-pad>
+										<span ng-hide="true">{{ctrl.ptouch2=dataurl}}</span>
+										<div class="buttons">
+											<button type="button" class="btn btn-default"
+												ng-click="clear()">Clear</button>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+				<!-- touchpad closed -->
+			</div>
+			<!--container closed  -->
+		</div>
+		<!-- spinal division closed -->
+          </div>
+
+		<div class="form-group">
+			<div class="col-sm-offset-4 col-sm-3"
+				data-ng-init="physicalbtnId='form2';">
+				<button data-ng-attr-id="physicalbtnId" type="button"
+					class="btn btn-success "
+					ng-click="ctrl.confirmSubmit(physicalbtnId)">Submit</button>
+			</div>
+		</div>
+		</form>
+	</div>
+</body>
+</html>
