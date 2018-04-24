@@ -51,6 +51,22 @@
 			console.log(epdid);
 			console.log(eneid);
 
+			dbDataPostSvc.getEncounterPatientDetail(eid).then(function(data) {
+				self.myData5 = data;
+			});
+			
+			dbDataPostSvc.getEncounterPhysicalExamination(eid).then(function(data) {
+				self.myData7 = data;
+			});
+			
+			dbDataPostSvc.getEncounterNeuologicalExamination(eid).then(function(data) {
+				self.myData6 = data;
+			});
+			
+			dbDataPostSvc.getEncounterClinicalImpression(eid).then(function(data){
+				self.myData8=data;
+			});
+			
 			var pid=l;
 
 			self.myData1 = {
@@ -324,7 +340,7 @@
 				});
 			}
 
-			if(self.myData1.closedFlag==1 || self.myData2.closedFlag==1 || self.myData3.closedFlag==1 || self.myData4.closedFlag==1)
+			if(self.myData1.closedFlag==1 || self.myData2.closedFlag==1 || self.myData3.closedFlag==1 || self.myData4.closedFlag==1 || self.myData5.closedFlag==1 || self.myData6.closedFlag==1||self.myData7.closedFlag==1||self.myData8.closedFlag==1)
 			{
 				self.myData.closedFlag=1;
 				self.myData.closeDate = new Date();

@@ -661,10 +661,10 @@
 									</h5></label>
 								<div>
 									<span class="segmented"> <label><input
-											type="radio" name="lp"
+											type="radio" name="rp"
 											ng-checked="ctrl.myData2[0].carotidPulsationRight=='1'"
 											disabled="disabled"><span class="label">Present</span></label>
-										<label><input type="radio" name="lp"
+										<label><input type="radio" name="rp"
 											ng-checked="ctrl.myData2[0].carotidPulsationRight=='0'"
 											disabled="disabled"> <span class="label">Absent</span></label>
 									</span>
@@ -1357,26 +1357,7 @@
 						</div>
 					</div>
 					<br>
-					<!-- <div class="form-group ">
-							<label class="control-label col-sm-4 " style="text-align: left">Any
-								change in GCS/Neurological examination noted during observation:</label>
-							<div class="container-fluid col-sm-5 ">
-								<div class="col-sm-6 ">
-									<label class="radio-inline"> <input type="radio"
-										name="gcsExam" id="gcsExam1" value="1"
-										ng-checked="ctrl.myData4[0].anyChangeNeurological==1"
-										ng-model="ctrl.myData4[0].anyChangeNeurological" disabled="disabled">Yes
-									</label>
-								</div>
-								<div class="col-sm-4 ">
-									<label class="radio-inline"> <input type="radio"
-										name="gcsExam" id="gcsExam2" value="0"
-										ng-checked="ctrl.myData4[0].anyChangeNeurological==0"
-										ng-model="ctrl.myData4[0].anyChangeNeurological" disabled="disabled">No
-									</label>
-								</div>
-							</div>
-						</div> -->
+				
 					<div class="form-group ">
 						<label class="control-label col-sm-4 " style="text-align: left">CT
 							scan head showed : </label>

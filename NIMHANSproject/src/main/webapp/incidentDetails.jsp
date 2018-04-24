@@ -112,35 +112,59 @@
 					<form class="form-horizontal">
 						<div class="media-body">
 							<div class="form-group">
-								<!-- Date input -->
+								
+								<!--****** Date input***** -->
+								
 								<label class="control-label col-sm-3" for="date"
 									style="text-align: left">Date and time of Examination:</label>
-								<div class="col-sm-3">
+								<div class="col-sm-3" ng-if="ctrl.myData5[0].dateOfExamination==null">
 									<span ng-hide="true">{{ctrl.myData1.dateOfExamination=ctrl.myData1.dateOfExamination
 										| date : "longDate"}}</span> <input name="DOE" type="date"
 										class="form-control" id="date_of_exam"
 										ng-model="ctrl.myData1.dateOfExamination">
 								</div>
-								<div class="col-sm-3">
+								<div class="col-sm-3" ng-if="ctrl.myData5[0].dateOfExamination!=null" >
+									<span ng-hide="true"></span> <input name="DOE" type="date"
+										class="form-control" id="date_of_exam"
+										value="{{ctrl.myData5[0].dateOfExamination}}">
+								</div>
+								
+								<!--****** Time input***** -->
+								<div class="col-sm-3" ng-if="ctrl.myData5[0].timeOfExamination==null">
 									<span ng-hide="true">{{ctrl.myData1.timeOfExamination=ctrl.myData1.timeOfExamination
 										| date : "shortTime"}}</span> <input name="Time" type="time"
 										class="form-control" id="time_of_exam"
 										ng-model="ctrl.myData1.timeOfExamination">
 								</div>
+								<div class="col-sm-3" ng-if="ctrl.myData5[0].timeOfExamination!=null">
+									<span ng-hide="true">{{ctrl.myData1.timeOfExamination=ctrl.myData1.timeOfExamination
+										| date : "shortTime"}}</span> <input name="Time"
+										class="form-control" id="time_of_exam"
+										 value="{{ctrl.myData5[0].timeOfExamination}}">
+								</div>
 							</div>
-							<div class="form-group">
+							
+							<!--****** Informant Name***** -->
+							<div class="form-group" >
 								<label class="control-label col-sm-3" for="informant_name"
 									style="text-align: left">Informant's Name:</label>
-								<div class="col-sm-6">
+								<div class="col-sm-6" ng-if="ctrl.myData5[0].informantName==null">
 									<input type="text" class="form-control" id="informant_name"
 										placeholder="Enter informant's name"
 										ng-model="ctrl.myData1.informantName">
 								</div>
+								<div class="col-sm-6" ng-if="ctrl.myData5[0].informantName!=null">
+									<input type="text" class="form-control" id="informant_name"
+										placeholder="Enter informant's name"
+										value="{{ctrl.myData5[0].informantName}}">
+								</div>
 							</div>
+							
+							<!--****** Informant Type***** -->		
 							<div class="form-group">
 								<label class="control-label col-sm-3" style="text-align: left">Informant's
 									type:</label>
-								<div class="col-sm-5">
+								<div class="col-sm-5" ng-if="ctrl.myData5[0].informantType==null">
 									<span class="segmented"> <label><input
 											type="radio" name="infor-type" id="type-e" value="Eyewitness"
 											ng-model="ctrl.myData1.informantType" checked><span
@@ -150,36 +174,68 @@
 											class="label">Hearsay</span></label>
 									</span>
 								</div>
+								<div class="col-sm-5" ng-if="ctrl.myData5[0].informantType!=null">
+									<span class="segmented"> <label><input
+											type="radio" name="infor-type" id="type-e" value="Eyewitness"
+										    ng-checked="ctrl.myData5[0].informantType == 'Eyewitness'"checked><span
+											class="label">Eyewitness</span></label> <label><input
+											type="radio" name="infor-type" id="type-w" value="Hearsay"
+										    ng-checked="ctrl.myData5[0].informantType == 'Hearsay'"><span
+											class="label">Hearsay</span></label>
+									</span>
+								</div>
 							</div>
 
+							<!--****** date of injury***** -->	
 							<div class="form-group">
 								<!-- Date input -->
 								<label class="control-label col-sm-3" for="date-of-injury"
 									style="text-align: left">Date and time of injury:</label>
-								<div class="col-sm-3">
+								<div class="col-sm-3" ng-if="ctrl.myData5[0].dateOfInjury==null">
 									<span ng-hide="true">{{ctrl.myData1.dateOfInjury=ctrl.myData1.dateOfInjury
 										| date : "longDate"}}</span> <input name="DOI" type="date"
 										class="form-control" id="date_of_injury"
 										ng-model="ctrl.myData1.dateOfInjury">
 								</div>
-								<div class="col-sm-3">
+								<div class="col-sm-3" ng-if="ctrl.myData5[0].dateOfInjury!=null">
+									<span ng-hide="true">{{ctrl.myData1.dateOfInjury=ctrl.myData1.dateOfInjury
+										| date : "longDate"}}</span> <input name="DOI" type="date"
+										class="form-control" id="date_of_injury"
+										value="{{ctrl.myData5[0].dateOfInjury}}">
+								</div>
+								
+								<!-- Time input -->
+								<div class="col-sm-3" ng-if="ctrl.myData5[0].timeOfInjury==null">
 									<span ng-hide="true">{{ctrl.myData1.timeOfInjury=ctrl.myData1.timeOfInjury
 										| date : "shortTime"}}</span> <input name="TOI" type="time"
 										class="form-control" id="time_of_injury"
 										ng-model="ctrl.myData1.timeOfInjury">
 								</div>
+								<div class="col-sm-3" ng-if="ctrl.myData5[0].timeOfInjury!=null">
+									<span ng-hide="true">{{ctrl.myData1.timeOfInjury=ctrl.myData1.timeOfInjury
+										| date : "shortTime"}}</span> <input name="TOI"
+										class="form-control" id="time_of_injury"
+										value="{{ctrl.myData5[0].timeOfInjury}}">
+								</div>
 							</div>
 
+							<!-- Place of Injury -->
 							<div class="form-group">
 								<label class="control-label col-sm-3" for="place of injury"
 									style="text-align: left">Place of Injury:</label>
-								<div class="col-sm-6">
+								<div class="col-sm-6" ng-if="ctrl.myData5[0].placeOfInjury==null">
 									<input type="text" class="form-control" id="place-of-injury"
 										placeholder="Enter place of injury"
 										ng-model="ctrl.myData1.placeOfInjury">
 								</div>
+								<div class="col-sm-6" ng-if="ctrl.myData5[0].placeOfInjury!=null">
+									<input type="text" class="form-control" id="place-of-injury"
+										placeholder="Enter place of injury"
+										value="{{ctrl.myData5[0].placeOfInjury}}">
+								</div>
 							</div>
 
+					        <!--History of Injury -->
 							<div class="form-group">
 								<label class="control-label col-sm-3 " for="history"
 									style="text-align: left">History of injury in detail:</label>
@@ -189,7 +245,7 @@
 												<b>Incident:</b>
 											</center>
 											<div class="container-fluid">
-												<div class="col-xm-10">
+												<div class="col-xm-10" ng-if="ctrl.myData5[0].incidentScenario==null" >
 													<span class="segmented"> <label><input
 															type="radio" id="input-rta" value="RTA"
 															ng-model="ctrl.myData1.incidentScenario"
@@ -208,12 +264,35 @@
 															onclick="javascript:show6();"><span class="label">Others</span></label>
 													</span>
 												</div>
+												<div class="col-xm-10" ng-if="ctrl.myData5[0].incidentScenario!=null">
+													<span class="segmented"> <label><input
+															type="radio" id="input-rta" value="RTA"
+															onclick="javascript:show2();"
+															ng-checked="ctrl.myData5[0].incidentScenario == 'RTA'"
+															ng-true-value="RTA" name="incident"><span
+															class="label">RTA</span></label> <label><input
+															name="incident" id="input-fall" value="Fall" type="radio"
+															onclick="javascript:show1();"
+															ng-checked="ctrl.myData5[0].incidentScenario == 'Fall'"
+															ng-true-value="Fall"><span class="label">Fall</span></label>
+														<label><input type="radio" name="incident"
+															id="input-assault" value="Assault" type="radio"
+															onclick="javascript:show5();"
+															ng-checked="ctrl.myData5[0].incidentScenario == 'Assault'"
+															ng-true-value="Assault"><span class="label">Assault</span></label>
+														<label><input name="incident" id="input-other"
+															value="Other" type="radio"
+															ng-checked="ctrl.myData5[0].incidentScenario == 'Other'"
+															ng-true-value="Other" onclick="javascript:show6();"><span
+															class="label">Others</span></label>
+													</span>
+												</div>
 
 											</div></li>
 										<div id="div6" style="display: none">
 											<li class="list-group-item">
 												<div class="container-fluid">
-													<div class="col-sm-8">
+													<div class="col-sm-8" ng-if="ctrl.myData5[0].otherInfo==null">
 														<div class="container-fluid" data-ng-init="ibtnId2='it2';">
 															<div>
 																<button type="button" class="btn btn-info"
@@ -247,6 +326,26 @@
 															</div>
 														</div>
 													</div>
+													<div class="col-sm-8" ng-if="ctrl.myData5[0].otherInfo!=null">
+														<div class="container-fluid" >
+
+															<div class="col-sm-12"
+																ng-if="!ctrl.myData5[0].otherInfo_flag;">
+																<textarea ng-show="!ctrl.myData5[0].otherInfo_flag;"
+																	class="form-control" rows="5" id="other"
+																	ng-model="ctrl.myData1[0].otherInfo"
+																	placeholder="Description" style="width: 100%"></textarea>
+															</div>
+															<div ng-if="ctrl.myData5[0].otherInfo_flag">
+																<div>
+																	<img class="col-sm-12"
+																		ng-show="ctrl.myData5[0].otherInfo"
+																		ng-src="data:image/JPEG;base64,{{ctrl.myData9.otherInfo}}"
+																		height="220" width="568" />
+																</div>
+															</div>
+														</div>
+													</div>
 												</div>
 											</li>
 										</div>
@@ -255,7 +354,7 @@
 										<div id="div1" style="display: none">
 											<li class="list-group-item">Vehicle Type:
 												<div class="container-fluid">
-													<div class="col-sm-8">
+													<div class="col-sm-8" ng-if="ctrl.myData5[0].vehicle_type==null">
 														<div class="segmented">
 															<label><input type="radio"
 																onclick="javascript:show3();" name="vt" value="true"
@@ -266,13 +365,25 @@
 																class="label">Four Wheeler</span></label>
 														</div>
 													</div>
+													<div class="col-sm-8" ng-if="ctrl.myData5[0].vehicle_type!=null">
+														<div class="segmented">
+															<label><input type="radio" name="vt"
+																ng-checked="ctrl.myData5[0].vehicle_type=='1'"
+																onclick="javascript:show3();"><span
+																class="label">Two Wheeler</span></label> <label><input
+																type="radio" name="vt"
+																ng-checked="ctrl.myData5[0].vehicle_type=='0'"
+																onclick="javascript:show4();"><span
+																class="label">Four Wheeler</span></label>
+														</div>
+													</div>
 												</div>
 											</li>
 										</div>
 										<div id="div5" style="display: none">
 											<li class="list-group-item">Person:
 												<div class="container-fluid">
-													<div class="col-sm-8">
+													<div class="col-sm-8" ng-if="ctrl.myData5[0].assault_person_type==null">
 														<div class="segmented">
 															<label><input type="radio" name="ka" value="true"
 																ng-model="ctrl.myData1.assault_person_type"><span
@@ -282,13 +393,23 @@
 																class="label">Unknown</span></label>
 														</div>
 													</div>
+													<div class="col-sm-8" ng-if="ctrl.myData5[0].assault_person_type!=null">
+														<div class="segmented">
+															<label><input type="radio" name="ka"
+																ng-checked="ctrl.myData5[0].assault_person_type=='1'"
+																disabled="disabled"><span class="label">known</span></label>
+															<label><input type="radio" name="ka"
+																ng-checked="ctrl.myData5[0].assault_person_type=='0'"
+																disabled="disabled"><span class="label">Unknown</span></label>
+														</div>
+													</div>
 												</div>
 											</li>
 										</div>
 										<div id="div4" style="display: none">
 											<li class="list-group-item">Alcohol Intake:
 												<div class="container-fluid">
-													<div class="col-sm-8">
+													<div class="col-sm-8" ng-if="ctrl.myData5[0].fall_alcohol==null">
 														<div class="segmented">
 															<label><input type="radio" name="fallalc"
 																value="true" ng-model="ctrl.myData1.fall_alcohol"><span
@@ -298,13 +419,23 @@
 																class="label">No</span></label>
 														</div>
 													</div>
+													<div class="col-sm-8" ng-if="ctrl.myData5[0].fall_alcohol!=null">
+														<div class="segmented">
+															<label><input type="radio" name="fallalc"
+																ng-checked="ctrl.myData5[0].fall_alcohol=='1'"><span
+																class="label">Yes</span></label> <label><input
+																type="radio" name="fallalc"
+																ng-checked="ctrl.myData5[0].fall_alcohol=='0'"><span
+																class="label">No</span></label>
+														</div>
+													</div>
 												</div>
 											</li>
 										</div>
 										<div id="div7" style="display: none">
 											<li class="list-group-item">Site of Fall:
 												<div class="container-fluid">
-													<div class="col-sm-8">
+													<div class="col-sm-8" ng-if="ctrl.myData5[0].fall_siteoffall==null">
 														<div class="container-fluid" data-ng-init="ibtnId1='it1';">
 															<div>
 																<button type="button" class="btn btn-info"
@@ -339,12 +470,32 @@
 														</div>
 													</div>
 												</div>
+												<div class="col-sm-8" ng-if="ctrl.myData5[0].fall_siteoffall!=null">
+														<div class="container-fluid">
+
+															<div class="col-sm-12"
+																ng-if="!ctrl.myData1[0].siteoffall_flag;">
+																<textarea ng-show="!ctrl.myData5[0].siteoffall_flag;"
+																	class="form-control" rows="5" id="other"
+																	ng-model="ctrl.myData5[0].siteoffall"
+																	placeholder="Description" style="width: 100%"></textarea>
+															</div>
+															<div ng-if="ctrl.myData5[0].siteoffall_flag">
+																<div>
+																	<img class="col-sm-12"
+																		ng-show="ctrl.myData5[0].siteoffall"
+																		ng-src="data:image/JPEG;base64,{{ctrl.myData9.otherInfo}}"
+																		height="220" width="568" />
+																</div>
+															</div>
+														</div>
+													</div>
 											</li>
 										</div>
 										<div id="div2" style="display: none">
 											<li class="list-group-item">Alcohol Intake:
 												<div class="container-fluid">
-													<div class="col-sm-8">
+													<div class="col-sm-8" ng-if="ctrl.myData5[0].rta_four_alcohol==null">
 														<div class="segmented">
 															<label><input type="radio" name="fouralc"
 																value="true" ng-model="ctrl.myData1.rta_four_alcohol"><span
@@ -354,11 +505,21 @@
 																class="label">No</span></label>
 														</div>
 													</div>
+													<div class="col-sm-8" ng-if="ctrl.myData5[0].rta_four_alcohol!=null">
+														<div class="segmented">
+															<label><input type="radio" name="fouralc"
+																ng-checked="ctrl.myData5[0].rta_four_alcohol=='1'"><span
+																class="label">Yes</span></label> <label><input
+																type="radio" name="fouralc"
+																ng-checked="ctrl.myData5[0].rta_four_alcohol=='0'"><span
+																class="label">No</span></label>
+														</div>
+													</div>
 												</div>
 											</li>
 											<li class="list-group-item">Victim Type:
 												<div class="container-fluid">
-													<div class="col-sm-10">
+													<div class="col-sm-10" ng-if="ctrl.myData5[0].rta_four_victimtype==null">
 														<div class="segmented">
 															<label><input type="radio" name="vt1"
 																value="Driver"
@@ -372,13 +533,26 @@
 																class="label">Pedestrian</span></label>
 														</div>
 													</div>
+													<div class="col-sm-10" ng-if="ctrl.myData5[0].rta_four_victimtype!=null">
+														<div class="segmented">
+															<label><input type="radio" name="vt1"
+																ng-checked="ctrl.myData5[0].rta_four_victimtype=='Driver'"><span
+																class="label">Driver</span></label> <label><input
+																type="radio" name="vt1"
+																ng-checked="ctrl.myData5[0].rta_four_victimtype=='Passenger'"><span
+																class="label">Passenger</span></label> <label><input
+																type="radio" name="vt1"
+																ng-checked="ctrl.myData5[0].rta_four_victimtype=='Pedestrian'"><span
+																class="label">Pedestrian</span></label>
+														</div>
+													</div>
 												</div>
 											</li>
 										</div>
 										<div id="div3" style="display: none">
 											<li class="list-group-item">Helmet:
 												<div class="container-fluid">
-													<div class="col-sm-8">
+													<div class="col-sm-8" ng-if="ctrl.myData5[0].rta_two_helmet==null">
 														<div class="segmented">
 															<label><input type="radio" name="ht" value="true"
 																ng-model="ctrl.myData1.rta_two_helmet"><span
@@ -388,11 +562,21 @@
 																class="label">No</span></label>
 														</div>
 													</div>
+													<div class="col-sm-8" ng-if="ctrl.myData5[0].rta_two_helmet!=null">
+														<div class="segmented">
+															<label><input type="radio" name="ht" input
+																ng-checked="ctrl.myData5[0].rta_two_helmet=='1'">><span
+																class="label">Yes</span></label> <label><input
+																type="radio" name="ht"
+																ng-checked="ctrl.myData5[0].rta_two_helmet=='0'"><span
+																class="label">No</span></label>
+														</div>
+													</div>
 												</div>
 											</li>
 											<li class="list-group-item">Alcohol Intake:
 												<div class="container-fluid">
-													<div class="col-sm-8">
+													<div class="col-sm-8" ng-if="ctrl.myData5[0].rta_two_alcohol==null">
 														<div class="segmented">
 															<label><input type="radio" name="twoalc"
 																value="true" ng-model="ctrl.myData1.rta_two_alcohol"><span
@@ -402,13 +586,23 @@
 																class="label">No</span></label>
 														</div>
 													</div>
+													<div class="col-sm-8" ng-if="ctrl.myData5[0].rta_two_alcohol!=null">
+														<div class="segmented">
+															<label><input type="radio" name="twoalc"
+																ng-checked="ctrl.myData5[0].rta_two_alcohol=='1'"><span
+																class="label">Yes</span></label> <label><input
+																type="radio" name="twoalc"
+																ng-checked="ctrl.myData5[0].rta_two_alcohol=='0'"><span
+																class="label">No</span></label>
+														</div>
+													</div>
 												</div>
 											</li>
 										</div>
 									</ul>
 								</div>
 								<br>
-								<div class="col-xs-12">
+								<div class="col-xs-12" ng-if="ctrl.myData5[0].commonText==null">
 									<div class="col-xs-2">
 										<label class="control-label" for="additional details"
 											style="text-align: left">Additional Details:</label>
@@ -441,6 +635,30 @@
 													<button type="button" class="btn btn-default color"
 														ng-click="clear()">Clear</button>
 												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-xs-12" ng-if="ctrl.myData5[0].commonText!=null">
+									<div class="col-xs-2">
+										<label class="control-label" for="additional details"
+											style="text-align: left">Additional Details:</label>
+									</div>
+									<div class="container-fluid col-xs-9">
+
+										<div class="col-sm-12"
+											ng-if="!ctrl.myData1[0].commonText_flag;">
+											<textarea ng-show="!ctrl.myData5[0].commonText_flag;"
+												class="form-control" rows="5" id="other"
+												ng-model="ctrl.myData5[0].commonText" style="width: 100%"
+												></textarea>
+										</div>
+										<div class="col-sm-12"
+											ng-if="ctrl.myData5[0].commonText_flag;">
+											<div>
+												<img class="col-sm-12" ng-show="ctrl.myData5[0].commonText"
+													ng-src="data:image/JPEG;base64,{{ctrl.myData9.commonText}}"
+													height="220" width="568" />
 											</div>
 										</div>
 									</div>
@@ -529,34 +747,49 @@
 						<div class="form-group">
 							<div>
 								<div class="col-xs-6">
-									<div>
+									<div ng-if="ctrl.myData7[0].lossOfConsciousness != 1">
 										<label> <input type="checkbox"
 											ng-model="ctrl.myData2.lossOfConsciousness"
 											ng-true-value="true" ng-false-value="false" />Loss Of
 											Consciousness
 										</label>
 									</div>
+									<div ng-if="ctrl.myData7[0].lossOfConsciousness == 1">
+										<label> <input type="checkbox"
+											ng-checked="ctrl.myData7[0].lossOfConsciousness == 1" />Loss Of
+											Consciousness
+										</label>
+									</div>
 
 									<br>
 
-									<div>
+									<div ng-if="ctrl.myData7[0].lucidInterval != 1">
 										<label> <input type="checkbox"
-											ng-model="ctrl.myData2.lucidInterval" ng-true-value="true"
+											ng-model="ctrl.myData7.lucidInterval" ng-true-value="true"
 											ng-false-value="false">Lucid Interval
+										</label>
+									</div>
+									<div ng-if="ctrl.myData7[0].lucidInterval == 1">
+										<label> <input type="checkbox"
+											ng-checked="ctrl.myData7[0].lucidInterval == 1">Lucid Interval
 										</label>
 									</div>
 									<br>
 
-									<div>
+									<div ng-if="ctrl.myData7[0].seizures != 1">
 										<label><input type="checkbox"
 											ng-model="ctrl.myData2.seizures" ng-true-value="true"
 											ng-false-value="false" />Seizures</label>
+									</div>
+									<div ng-if="ctrl.myData7[0].seizures == 1">
+										<label><input type="checkbox"
+											ng-checked="ctrl.myData2[0].seizures == 1" />Seizures</label>
 									</div>
 									<!-- seizure division closed -->
 
 									<br>
 
-									<div>
+									<div ng-checked="ctrl.myData7[0].vomiting != 1">
 
 										<label> <input type="checkbox"
 											ng-model="ctrl.myData2.vomiting" ng-true-value="true"
@@ -564,14 +797,27 @@
 										</label>
 
 									</div>
+									<div ng-if="ctrl.myData7[0].vomiting == 1">
+
+										<label> <input type="checkbox"
+											ng-checked="ctrl.myData7[0].vomiting == 1" />Vomiting
+										</label>
+
+									</div>
 									<!-- vomiting division closed -->
 
 									<br>
 
-									<div>
+									<div ng-if="ctrl.myData7[0].amnesia != 1">
 										<label> <input type="checkbox"
 											ng-model="ctrl.myData2.amnesia" ng-true-value="true"
 											ng-false-value="false" />Amnesia
+										</label>
+
+									</div>
+									<div ng-if="ctrl.myData7[0].amnesia == 1">
+										<label> <input type="checkbox"
+											ng-checked="ctrl.myData7[0].amnesia == 1" />Amnesia
 										</label>
 
 									</div>
@@ -579,7 +825,7 @@
 
 									<br>
 
-									<div>
+									<div ng-if="ctrl.myData7[0].bleedingFromNose==null  || ctrl.myData7[0].bleedingFromEar== null">
 										<label>Bleeding from: </label> <label> <input
 											type="checkbox" ng-model="ctrl.myData2.bleedingFromEar"
 											ng-true-value="true" ng-false-value="false" /> Ear
@@ -587,9 +833,15 @@
 											ng-model="ctrl.myData2.bleedingFromNose" ng-true-value="true"
 											ng-false-value="false" /> Nose </label>
 									</div>
+									<div ng-if="ctrl.myData7[0].bleedingFromNose!= null || ctrl.myData7[0].bleedingFromEar!= null">
+										<label>Bleeding from: </label> <label> <input
+											ng-checked="ctrl.myData7[0].bleedingFromEar== 1" /> Ear
+										</label> <label><input type="checkbox"
+											ng-checked="ctrl.myData7[0].bleedingFromNose== 1" /> Nose </label>
+									</div>
 									<!-- bleeding from division closed -->
 								</div>
-								<div class="col-xs-6">
+								<div class="col-xs-6" ng-if="ctrl.myData7[0].historyOfInjuryCommon==null">
 
 									<div class="container-fluid" data-ng-init="pbtnId1='pt1';">
 										<div>
@@ -623,6 +875,27 @@
 										</div>
 									</div>
 								</div>
+								<div class="col-xs-6" ng-if="ctrl.myData7[0].historyOfInjuryCommon!=null">
+
+									<div class="col-sm-12"
+										ng-if="!ctrl.myData7[0].historyOfInjuryCommonFlag;">
+										<textarea
+											ng-show="!ctrl.myData7[0].historyOfInjuryCommonFlag;"
+											class="form-control" rows="5" id="other"
+											ng-model="ctrl.myData7[0].historyOfInjuryCommon;"
+											style="width: 100%" readonly></textarea>
+									</div>
+									<div class="col-sm-12"
+										ng-if="ctrl.myData7[0].historyOfInjuryCommonFlag;">
+										<div>
+											<img class="col-sm-12"
+												ng-show="ctrl.myData7[0].historyOfInjuryCommon;"
+												ng-src="data:image/JPEG;base64,{{ctrl.myData7.historyOfInjuryCommonFlag}}"
+												height="220" width="568" />
+										</div>
+									</div>
+									
+								</div>
 							</div>
 						</div>
 					</div>
@@ -633,7 +906,7 @@
 
 				<label style="padding-top: 10px; padding-left: 270px"><h3>Vital
 						signs on arrival:</h3></label> <br>
-				<div class="col-xs-5">
+				<div class="col-xs-5" ng-if="ctrl.myData7[0].airwayOnArrival==null">
 					<label style="padding-left: 40px;"><h4>Airway on
 							arrival:</h4></label> <br>
 					
@@ -648,7 +921,23 @@
 						</span>
 					
 				</div>
-				<div class="col-xs-7">
+				<div class="col-xs-5" ng-if="ctrl.myData7[0].airwayOnArrival!=null">
+					<label style="padding-left: 40px;"><h4>Airway on
+							arrival:</h4></label> <br>
+					
+						<span class="segmented"> <label><input type="radio"
+								name="airway" id="type-c"
+								ng-checked="ctrl.myData7[0].airwayOnArrival=='Clear'"
+											value="Clear"><span
+								class="label">clear</span></label> <label><input type="radio"
+								name="airway" id="type-r"
+								ng-checked="ctrl.myData7[0].airwayOnArrival=='Requires Intubation'"			
+								value="Requires Intubation"><span class="label">Requires
+									Intubation</span></label>
+						</span>
+					
+				</div>
+				<div class="col-xs-7" ng-if="ctrl.myData7[0].spontaneousRespiration==null">
 					<label style="padding-left: 80px;"><h4>Spontaneous
 							Respiration:</h4></label>
 
@@ -666,12 +955,30 @@
 						</span>
 					
 				</div>
+				<div class="col-xs-7" ng-if="ctrl.myData7[0].spontaneousRespiration!=null">
+					<label style="padding-left: 80px;"><h4>Spontaneous
+							Respiration:</h4></label>
+
+					
+						<span class="segmented"> <label><input type="radio"
+								name="Spontaneous" id="type-c"
+								ng-checked="ctrl.myData7[0].spontaneousRespiration=='Normal'" value="Normal"><span
+								class="label">Normal</span></label> <label><input type="radio"
+								name="Spontaneous" id="type-r"
+								ng-checked="ctrl.myData7[0].spontaneousRespiration=='Tachypnoeic'"
+								value="Tachypnoeic"><span class="label">Tachypnoeic</span></label>
+							<label><input type="radio" name="Spontaneous" id="type-g"
+								ng-checked="ctrl.myData7[0].spontaneousRespiration=='Gasping'" value="Gasping"><span
+								class="label">Gasping</span></label>
+						</span>
+					
+				</div>
 			</div>
 			<div>
 				<label><h4>Carotid Pulsations:</h4></label>
 			</div>
 			<div class="col-xs-12">
-				<div class="col-xs-6">
+				<div class="col-xs-6" ng-if="ctrl.myData7[0].carotidPulsationLeft==null">
 					<label style="padding-left: 100px;"><h5>
 							<b>LEFT</b>
 						</h5></label>
@@ -686,7 +993,22 @@
 							</span>
 					</div>
 				</div>
-				<div class="col-xs-6">
+				<div class="col-xs-6" ng-if="ctrl.myData7[0].carotidPulsationLeft!=null">
+					<label style="padding-left: 100px;"><h5>
+							<b>LEFT</b>
+						</h5></label>
+					<div>
+						<span class="segmented"> <label><input
+									type="radio" name="lp" 
+									ng-checked="ctrl.myData7[0].carotidPulsationLeft=='1'"><span
+									class="label">Present</span></label> <label><input type="radio"
+									name="lp" 
+									ng-checked="ctrl.myData7[0].carotidPulsationLeft=='0'"><span
+									class="label">Absent</span></label>
+							</span>
+					</div>
+				</div>
+				<div class="col-xs-6" ng-if="ctrl.myData7[0].carotidPulsationRight==null">
 					<label style="padding-left: 100px;"><h5>
 							<b>RIGHT</b>
 						</h5></label>
@@ -701,6 +1023,21 @@
 						</span>
 					</div>
 				</div>
+				<div class="col-xs-6" ng-if="ctrl.myData7[0].carotidPulsationRight!=null">
+					<label style="padding-left: 100px;"><h5>
+							<b>RIGHT</b>
+						</h5></label>
+					<div>
+						<span class="segmented"> <label><input type="radio"
+								name="rp" 
+								ng-checked="ctrl.myData7[0].carotidPulsationRight=='1'"><span
+								class="label">Present</span></label> <label><input type="radio"
+								name="rp" 
+								ng-checked="ctrl.myData7[0].carotidPulsationRight=='0'"><span
+								class="label">Absent</span></label>
+						</span>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -709,7 +1046,7 @@
 				<div class=" col-xs-12">
 					<label><strong>Pulse Rate(/min):</strong></label>
 				</div>
-				<div class="col-xs-12">
+				<div class="col-xs-12" ng-if="ctrl.myData7[0].pulseRrate==null">
 					<div class="col-xs-2" style="padding-top: 25px;">
 					<input type="text" id="pulse" size="5" ng-model="ctrl.myData2.pulseRrate">
 					</div>
@@ -739,6 +1076,13 @@
 									</script> 
 					</div>
 				</div>
+				<div class="col-xs-12" ng-if="ctrl.myData7[0].pulseRrate!=null">
+								<div class="col-xs-2" style="padding-top: 25px;">
+									<input type="text" id="pulse" size="5"
+										value="{{ctrl.myData7[0].pulseRrate}}" />
+								</div>
+
+							</div>
 			</div>
 		</div>
 		<div class="borders col-xs-9">
@@ -750,7 +1094,7 @@
 				<div class="col-xs-2" style="padding-top: 15px;">
 					<label>Systolic</label>
 				</div>
-				<div class="col-xs-12">
+				<div class="col-xs-12" ng-if="ctrl.myData7[0].bpOnArrivalSystolic==null">
 					<div class="col-xs-2" style="padding-top: 25px;">
 						<input type="text" id="slid2"
 							ng-model="ctrl.myData2.bpOnArrivalSystolic" size="5">
@@ -791,11 +1135,18 @@
 									</script>
 					</div>
 				</div>
+				<div class="col-xs-12" ng-if="ctrl.myData7[0].bpOnArrivalSystolic!=null">
+								<div class="col-xs-2" style="padding-top: 25px">
+									<input type="text" id="slid2"
+										value="{{ctrl.myData7[0].bpOnArrivalSystolic}}"  />
+								</div>
+
+							</div>
 
 				<div class="col-xs-2" style="padding-top: 15px;">
 					<label>Dystolic</label>
 				</div>
-				<div class="col-xs-12">
+				<div class="col-xs-12" ng-if="ctrl.myData7[0].bpOnArrivalDystolic==null">
 					<div class="col-xs-2" style="padding-top: 25px;">
 						<input type="text" id="slid3"
 							ng-model="ctrl.myData2.bpOnArrivalDystolic" size="5">
@@ -836,6 +1187,13 @@
 									</script>
 					</div>
 				</div>
+				<div class="col-xs-12" ng-if="ctrl.myData2[0].bpOnArrivalDystolic!=null">
+								<div class="col-xs-2" style="padding-top: 25px;">
+									<input type="text" id="slid3"
+										value="{{ctrl.myData2[0].bpOnArrivalDystolic}}" readonly />
+								</div>
+
+							</div>
 			</div>
 		</div>
 		<div class="borders col-xs-9">
@@ -849,7 +1207,7 @@
 					style="padding-top: 25px; padding-right: 10px;">
 					<label>Systolic</label>
 				</div>
-				<div class="col-xs-12">
+				<div class="col-xs-12" ng-if="ctrl.myData7[0].bpAfterHalfHourSystolic==null">
 					<div class="col-xs-2" style="padding-top: 25px;">
 						<input type="text" id="slid4"
 							ng-model="ctrl.myData2.bpAfterHalfHourSystolic" size="5">
@@ -890,11 +1248,19 @@
 									</script>
 					</div>
 				</div>
+				<div class="col-xs-12" ng-if="ctrl.myData7[0].bpAfterHalfHourSystolic!=null">
+								<div class="col-xs-2" style="padding-top: 25px;">
+									<input type="text" id="slid4"
+										value="{{ctrl.myData2[0].bpAfterHalfHourSystolic}}" readonly />
+
+								</div>
+
+							</div>
 
 				<div class="col-xs-2" style="padding-top: 25px;">
 					<label>Dystolic</label>
 				</div>
-				<div class="col-xs-12">
+				<div class="col-xs-12" ng-if="ctrl.myData7[0].bpAfterHalfHourDystolic==null">
 					<div class="col-xs-2" style="padding-top: 25px;">
 						<input type="text" id="slid5"
 							ng-model="ctrl.myData2.bpAfterHalfHourDystolic" size="5"
@@ -936,6 +1302,13 @@
 									</script>
 					</div>
 				</div>
+				<div class="col-xs-12" ng-if="ctrl.myData7[0].bpAfterHalfHourDystolic!=null">
+								<div class="col-xs-2" style="padding-top: 25px;">
+									<input type="text" id="slid5"
+										value="{{ctrl.myData7[0].bpAfterHalfHourDystolic}}"  />
+								</div>
+
+							</div>
 			</div>
 		</div>
 
@@ -947,9 +1320,9 @@
 			<div class="form-group col-sm-12">
 				<label class="control-label col-sm-12" style="text-align: left">Systemic
 					Examination:</label>
-				<div class="col-xs-12">
+				<div class="col-xs-12" >
 
-					<div style="padding-top: 10px">
+					<div style="padding-top: 10px" ng-if="ctrl.myData7[0].csf==null">
 						<span class="segmented"> <label><input name="csf"
 								id="type-r" value="Rhinorrhoea" type="radio"
 								ng-model="ctrl.myData2.csf"><span class="label">Rhinorrhoea</span></label>
@@ -961,49 +1334,98 @@
 						</span>
 
 					</div>
+					<div style="padding-top: 10px" ng-if="ctrl.myData7[0].csf!=null">
+									<span class="segmented"> <label><input
+											name="csf" id="type-r" value="Rhinorrhoea" type="radio"
+											
+											ng-checked="ctrl.myData7[0].csf=='Rhinorrhoea'" ><span
+											class="label">Rhinorrhoea</span></label> <label><input
+											name="csf" id="type-o" value="Otorrhoea" type="radio"
+											
+											ng-checked="ctrl.myData7[0].csf=='Otorrhoea'" ><span
+											class="label">Otorrhoea</span></label> <label><input
+											name="csf" id="type-b" value="Both" type="radio"
+											
+											ng-checked="ctrl.myData7[0].csf=='Both'" ><span
+											class="label">Both</span></label>
+									</span>
+
+								</div>
 					<!-- csf division closed -->
 					<div class="col-xs-6">
 						<div class="col-xs-10" style="padding-top: 20px">
 
-							<div>
+							<div ng-if="ctrl.myData7[0].activePeripheralBleeding==null">
 								<label><input type="checkbox" id="type-apb"
 									value="Active peripheral Bleeding"
 									ng-model="ctrl.myData2.activePeripheralBleeding" />Active
 									peripheral Bleeding</label>
 							</div>
+							<div ng-if="ctrl.myData7[0].activePeripheralBleeding!=null">
+								<label><input type="checkbox" id="type-apb"
+									ng-checked="ctrl.myData7[0].activePeripheralBleeding==1" />Active
+									peripheral Bleeding</label>
+							</div>
 
-							<div>
+							<div ng-if="ctrl.myData7[0].fractures==null">
 								<label> <input type="checkbox" id="type-fracture"
 									value="Fractures" ng-model="ctrl.myData2.fractures" />Fractures
 								</label>
 							</div>
-							<div>
+							<div ng-if="ctrl.myData7[0].fractures!=null">
+								<label> <input type="checkbox" id="type-fracture"
+									ng-checked="ctrl.myData7[0].fractures==1" />Fractures
+								</label>
+							</div>
+							<div ng-if="ctrl.myData7[0].peripheralPulses==null">
 								<label><input type="checkbox" id="type-pp"
 									value="Peripheral Pulses"
 									ng-model="ctrl.myData2.peripheralPulses" />Peripheral Pulses</label>
 
 							</div>
+							<div ng-if="ctrl.myData7[0].peripheralPulses!=null">
+								<label><input type="checkbox" id="type-pp"
+									value="Peripheral Pulses"
+									ng-checked="ctrl.myData7[0].peripheralPulses==1" />Peripheral Pulses</label>
+
+							</div>
 
 							<!--peripheral pulses division closed -->
 
-							<div>
+							<div ng-if="ctrl.myData7[0].chestInjury==null">
 								<label><input type="checkbox" id="type-ci"
 									value="Chest Injury" ng-model="ctrl.myData2.chestInjury" />Chest
 									Injury</label>
 							</div>
+							<div ng-if="ctrl.myData7[0].chestInjury!=null">
+								<label><input type="checkbox" id="type-ci"
+									value="Chest Injury" ng-checked="ctrl.myData7[0].chestInjury==1" />Chest
+									Injury</label>
+							</div>
 							<!-- chest injury division closed -->
 
-							<div>
+							<div ng-if="ctrl.myData7[0].abdominalInjury==null">
 								<label><input type="checkbox" id="type-ai"
 									value="Abdominal Injury"
 									ng-model="ctrl.myData2.abdominalInjury" />Abdominal Injury</label>
 
 							</div>
+							<div ng-if="ctrl.myData7[0].abdominalInjury!=null">
+								<label><input type="checkbox" id="type-ai"
+									value="Abdominal Injury"
+									ng-checked="ctrl.myData7[0].abdominalInjury==1" />Abdominal Injury</label>
+
+							</div>
 							<!-- abdominal injury division closed -->
 
-							<div>
+							<div ng-if="ctrl.myData7[0].wounds==null">
 								<label><input type="checkbox" id="type-w" value="Wounds"
 									ng-model="ctrl.myData2.wounds" />Wounds</label>
+
+							</div>
+							<div ng-if="ctrl.myData7[0].wounds!=null">
+								<label><input type="checkbox" id="type-w" value="Wounds"
+									ng-checked="ctrl.myData7[0].wounds==1"/>Wounds</label>
 
 							</div>
 							<!-- wounds division closed -->
@@ -1012,22 +1434,34 @@
 						<div class="form-group">
 							<label class="control-label col-sm-12" style="text-align: left">Details
 								Of Spine Examination:</label>
-							<div>
+							<div ng-if="ctrl.myData7[0].spinalTenderness==null">
 								<label class="radio-inline"> <input type="checkbox"
 									id="type-t" value="Spinal Tenderness"
 									ng-model="ctrl.myData2.spinalTenderness" /><b>Spinal
 										Tenderness </label>
 							</div>
+							<div ng-if="ctrl.myData7[0].spinalTenderness!=null">
+								<label class="radio-inline"> <input type="checkbox"
+									id="type-t" value="Spinal Tenderness"
+									ng-checked="ctrl.myData7[0].spinalTenderness==1" /><b>Spinal
+										Tenderness </label>
+							</div>
 
-							<div>
+							<div ng-if="ctrl.myData7[0].spinalDeformity==null">
 								<label class="radio-inline"> <input type="checkbox"
 									id="type-d" value="Spinal Deformity"
-									ng-model="ctrl.myData2.spinalDeformity" /><b>Spinal
+									ng-checked="ctrl.myData7[0].spinalDeformity==1"/><b>Spinal
+										Deformity </label>
+							</div>
+							<div ng-if="ctrl.myData7[0].spinalDeformity!=null">
+								<label class="radio-inline"> <input type="checkbox"
+									id="type-d" value="Spinal Deformity"
+									ng-checked="ctrl.myData7[0].spinalDeformity==1" /><b>Spinal
 										Deformity </label>
 							</div>
 						</div>
 					</div>
-					<div class="col-xs-6">
+					<div class="col-xs-6" ng-if="ctrl.myData7[0].systemicExaminationCommon==null">
 						<div class="container-fluid" data-ng-init="pbtnId2='pt2';">
 							<div style="padding-left: 100px;">
 								<button type="button" class="btn btn-info"
@@ -1065,6 +1499,29 @@
 					
 					
 					</div>
+					<div class="container-fluid col-xs-6" ng-if="ctrl.myData7[0].systemicExaminationCommon!=null">
+
+									<div class="col-sm-12"
+										ng-if="!ctrl.myData7[0].systemicExaminationCommonFlag;">
+										<textarea
+											ng-show="!ctrl.myData7[0].systemicExaminationCommonFlag;"
+											class="form-control" rows="5" id="other"
+											ng-model="ctrl.myData7[0].systemicExaminationCommon;"
+											style="width: 100%" ></textarea>
+									</div>
+									<div class="col-sm-12"
+										ng-if="ctrl.myData7[0].systemicExaminationCommonFlag;">
+										<div>
+											<img class="col-sm-12"
+												ng-show="ctrl.myData7[0].systemicExaminationCommon;"
+												ng-src="data:image/JPEG;base64,{{ctrl.myData7.systemicExaminationCommonFlag}}"
+												height="220" width="568" />
+										</div>
+									</div>
+									<div ng-if="ctrl.myData7[0].systemicExaminationCommon==null">
+										<span>No Details<span>
+									</div>
+								</div>
 					<!-- touchpad closed -->
 				</div>
 				<!--container closed  -->
@@ -1180,13 +1637,23 @@
 												onclick="check1(this.value)"ng-model="ctrl.myData3.eyeOpeneingScoreInitial"><span class="label">4</span></label>
 										</span>
 									</div>
-									<div class="col-xs-1" style="padding-top: 25px;">
-										<input type="text" size="1" id="erbi"
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].eyeOpeneingScoreInitial==null">
+										<input type="text" size="1" id="erbi" 
 											ng-bind="ctrl.myData3.eyeOpeneingScoreInitial" readonly>
 									</div>
-									<div class="col-xs-1" style="padding-top: 25px;">
-										<input type="text" size="1" id="erbf"
-											ng-bind="ctrl.myData3.eyeOpeningScoreAfterRes" readonly>
+									
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].eyeOpeneingScoreInitial!=null">
+									<input type="text" size="1" 
+										value="{{ctrl.myData8[0].eyeOpeneingScoreInitial}}" >
+									</div>
+									
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].eyeOpeningScoreAfterRes==null">
+										<input type="text" size="1" id="erbf" ng-bind="ctrl.myData3.eyeOpeningScoreAfterRes" readonly>
+									</div>
+									
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].eyeOpeningScoreAfterRes!=null">
+									<input type="text" size="1" 
+										value="{{ctrl.myData8[0].eyeOpeningScoreAfterRes}}" >
 									</div>
 								</div>
 								<div class="col-xs-12">
@@ -1208,13 +1675,22 @@
 												onclick="check2(this.value)"ng-model="ctrl.myData3.motorResponseScoreInitial"><span class="label">6</span></label>
 										</span>
 									</div>
-									<div class="col-xs-1" style="padding-top: 25px;">
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].motorResponseScoreInitial==null">
 										<input type="text" size="1" id="mrbi"
 											ng-model="ctrl.myData3.motorResponseScoreInitial" readonly>
 									</div>
-									<div class="col-xs-1" style="padding-top: 25px;">
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].motorResponseScoreInitial!=null">
+									<input type="text" size="1" 
+										value="{{ctrl.myData8[0].motorResponseScoreInitial}}" >
+									</div>
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].motorResponseScoreAfterRes==null">
 										<input type="text" size="1" id="mrbf"
 											ng-model="ctrl.myData3.motorResponseScoreAfterRes" readonly>
+									</div>
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].motorResponseScoreAfterRes!=null">
+									<input type="text" size="1" 
+										value="{{ctrl.myData8[0].motorResponseScoreAfterRes}}"
+										>
 									</div>
 								</div>
 								<div class="col-xs-12">
@@ -1234,13 +1710,23 @@
 												onclick="check3(this.value)"ng-model="ctrl.myData3.verbalResponseScoreInitial"><span class="label">5</span></label>
 										</span>
 									</div>
-									<div class="col-xs-1" style="padding-top: 25px;">
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].verbalResponseScoreInitial==null">
 										<input type="text" size="1" id="vrbi"
 											ng-model="ctrl.myData3.verbalResponseScoreInitial" readonly>
 									</div>
-									<div class="col-xs-1" style="padding-top: 25px;">
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].verbalResponseScoreInitial!=null">
+									<input type="text" size="1" 
+										value="{{ctrl.myData8[0].verbalResponseScoreInitial}}"
+										>
+									</div>
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].verbalResponseScoreAfterResl==null">
 										<input type="text" size="1" id="vrbf"
 											ng-model="ctrl.myData3.verbalResponseScoreAfterRes" readonly>
+									</div>
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].verbalResponseScoreAfterRes!=null">
+									<input type="text" size="1" 
+										value="{{ctrl.myData8[0].verbalResponseScoreAfterRes}}"
+										>
 									</div>
 								</div>
 							</div>
@@ -1265,13 +1751,22 @@
 												onclick="check4(this.value)"ng-model="ctrl.myData3.eyeOpeningScoreAfterRes"><span class="label">4</span></label>
 										</span>
 									</div>
-									<div class="col-xs-1" style="padding-top: 25px;">
+									<div class="col-xs-1" style="padding-top: 25px;"  ng-if="ctrl.myData8[0].eyeOpeneingScoreInitial==null">
 										<input type="text" size="1" id="erai"
 											ng-model="ctrl.myData3.eyeOpeneingScoreInitial" readonly>
 									</div>
-									<div class="col-xs-1" style="padding-top: 25px;">
-										<input type="text" size="1" id="eraf"
-											ng-model="ctrl.myData3.eyeOpeningScoreAfterRes" readonly>
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].eyeOpeneingScoreInitial!=null">
+									<input type="text" size="1" 
+										value="{{ctrl.myData8[0].eyeOpeneingScoreInitial}}" >
+									</div>
+									
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].eyeOpeningScoreAfterRes==null">
+										<input type="text" size="1" id="eraf" ng-bind="ctrl.myData3.eyeOpeningScoreAfterRes" readonly>
+									</div>
+									
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].eyeOpeningScoreAfterRes!=null">
+									<input type="text" size="1" 
+										value="{{ctrl.myData8[0].eyeOpeningScoreAfterRes}}" >
 									</div>
 								</div>
 								<div class="col-xs-12">
@@ -1293,13 +1788,22 @@
 												onclick="check5(this.value)"ng-model="ctrl.myData3.motorResponseScoreAfterRes"><span class="label">6</span></label>
 										</span>
 									</div>
-									<div class="col-xs-1" style="padding-top: 25px;">
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].motorResponseScoreInitial==null">
 										<input type="text" size="1" id="mrai"
 											ng-model="ctrl.myData3.motorResponseScoreInitial" readonly>
 									</div>
-									<div class="col-xs-1" style="padding-top: 25px;">
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].motorResponseScoreInitial!=null">
+									<input type="text" size="1" 
+										value="{{ctrl.myData8[0].motorResponseScoreInitial}}" >
+									</div>
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].motorResponseScoreAfterRes==null">
 										<input type="text" size="1" id="mraf"
 											ng-model="ctrl.myData3.motorResponseScoreAfterRes" readonly>
+									</div>
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].motorResponseScoreAfterRes!=null">
+									<input type="text" size="1" 
+										value="{{ctrl.myData8[0].motorResponseScoreAfterRes}}"
+										>
 									</div>
 								</div>
 								<div class="col-xs-12">
@@ -1319,13 +1823,23 @@
 												onclick="check6(this.value)"ng-model="ctrl.myData3.verbalResponseScoreAfterRes" ><span class="label">5</span></label>
 										</span>
 									</div>
-									<div class="col-xs-1" style="padding-top: 25px;">
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].verbalResponseScoreInitial==null">
 										<input type="text" size="1" id="vrai"
 											ng-model="ctrl.myData3.verbalResponseScoreInitial" readonly>
 									</div>
-									<div class="col-xs-1" style="padding-top: 25px;">
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].verbalResponseScoreInitial!=null">
+									<input type="text" size="1" 
+										value="{{ctrl.myData8[0].verbalResponseScoreInitial}}"
+										>
+									</div>
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].verbalResponseScoreAfterResl==null">
 										<input type="text" size="1" id="vraf"
 											ng-model="ctrl.myData3.verbalResponseScoreAfterRes" readonly>
+									</div>
+									<div class="col-xs-1" style="padding-top: 25px;" ng-if="ctrl.myData8[0].verbalResponseScoreAfterRes!=null">
+									<input type="text" size="1" 
+										value="{{ctrl.myData8[0].verbalResponseScoreAfterRes}}"
+										>
 									</div>
 								</div>
 							</div>
@@ -1342,7 +1856,7 @@
 							<div class="col-sm-1">
 								<label class="control-label col-sm-2" style="text-align: left;">Right:</label>
 							</div>
-							<div class="col-xs-11">
+							<div class="col-xs-11"  ng-if="ctrl.myData6[0].horizontalOculocephalicReflexRight==null">
 								<span class="segmented"> <label> <input
 										type="radio" name="radioHRight"
 										ng-model="ctrl.myData3.horizontalOculocephalicReflexRight"
@@ -1359,12 +1873,28 @@
 								</label>
 								</span>
 							</div>
+							<div class="col-xs-11" ng-if="ctrl.myData6[0].horizontalOculocephalicReflexRight!=null">
+									<span class="segmented"> <label> <input
+											type="radio" name="radioHRight"
+											ng-checked="ctrl.myData6[0].horizontalOculocephalicReflexRight == 'present'"
+											ng-true-value="present" value="present" disabled><span
+											class="label">Present</span></label> <label> <input
+											type="radio" name="radioHRight"
+											ng-checked="ctrl.myData6[0].horizontalOculocephalicReflexRight == 'absent'"
+											ng-true-value="absent" value="absent" disabled><span
+											class="label">Absent</span></label> <label> <input
+											type="radio" name="radioHRight"
+											ng-checked="ctrl.myData6[0].horizontalOculocephalicReflexRight == 'not_tested'"
+											ng-true-value="not_tested" value="not_tested" disabled><span
+											class="label">Not Tested</span></label>
+									</span>
+								</div>
 						</div>
 						<div class="col-xs-12">
 							<div class="col-sm-1">
 								<label class="control-label col-sm-2" style="text-align: left;">Left:</label>
 							</div>
-							<div class="col-xs-11">
+							<div class="col-xs-11" ng-if="ctrl.myData6[0].horizontalOculocephalicReflexLeft==null">
 								<span class="segmented"> <label> <input
 										type="radio" name="radioHLeft"
 										ng-model="ctrl.myData3.horizontalOculocephalicReflexLeft"
@@ -1381,6 +1911,22 @@
 								</label>
 								</span>
 							</div>
+							<div class="col-xs-11" ng-if="ctrl.myData6[0].horizontalOculocephalicReflexLeft!=null">
+									<span class="segmented"> <label> <input
+											type="radio" name="radioHLeft"
+											ng-checked="ctrl.myData6[0].horizontalOculocephalicReflexLeft == 'present'" ng-value="present" disabled><span
+											class="label">Present</span></label> <label> <input
+											type="radio" name="radioHLeft"
+											ng-checked="ctrl.myData6[0].horizontalOculocephalicReflexLeft == 'absent'"
+									         ng-value="absent" disabled><span
+											class="label">Absent</span></label> <label> <input
+											type="radio" name="radioHLeft"
+											ng-checked="ctrl.myData6[0].horizontalOculocephalicReflexLeft == 'not_tested'"
+											 ng-value="not_tested" disabled><span
+											class="label">Not Tested</span></label>
+									</span>
+								</div>
+							
 						</div>
 					</div>
 				</div>
@@ -1393,7 +1939,7 @@
 								<label class="control-label col-sum-2"
 									style="text-align: left; padding-right: 1em;">Right:</label>
 							</div>
-							<div class="col-xs-11">
+							<div class="col-xs-11" ng-if="ctrl.myData6[0].pupiliaryLightReflexRight==null">
 								<span class="segmented"> <label><input
 										type="radio" name="radioPRight"
 										ng-model="ctrl.myData3.pupiliaryLightReflexRight"
@@ -1413,6 +1959,26 @@
 										class="label">Not Recorded</span></label>
 								</span>
 							</div>
+							<div class="col-xs-11" ng-if="ctrl.myData6[0].pupiliaryLightReflexRight!=null">
+									<span class="segmented"> <label><input
+											type="radio" name="radioPRight"
+											ng-checked="ctrl.myData6[0].pupiliaryLightReflexRight == 'normal'"
+											ng-true-value="normal" value="normal" disabled><span
+											class="label">Normal</span></label> <label><input
+											type="radio" name="radioPRight"
+											ng-checked="ctrl.myData6[0].pupiliaryLightReflexRight == 'sluggish'"
+											ng-true-value="sluggish" value="sluggish" disabled><span
+											class="label">Sluggish</span></label> <label><input
+											type="radio" name="radioPRight"
+											ng-checked="ctrl.myData6[0].pupiliaryLightReflexRight == 'absent'"
+											ng-true-value="absent" value="absent" disabled><span
+											class="label">Absent</span></label> <label><input
+											type="radio" name="radioPRight"
+											ng-checked="ctrl.myData6[0].pupiliaryLightReflexRight == 'cannot_access'"
+											ng-true-value="cannot_access" value="cannot_access" disabled><span
+											class="label">Not Recorded</span></label>
+									</span>
+								</div>
 						</div>
 
 						<div class="col-sm-12">
@@ -1420,7 +1986,7 @@
 								<label class="control-label"
 									style="text-align: left; padding-right: 1em;"> Left:</label>
 							</div>
-							<div class="col-xs-11">
+							<div class="col-xs-11" ng-if="ctrl.myData6[0].pupiliaryLightReflexLeft == null">
 								<span class="segmented"> <label><input
 										type="radio" name="radioPLeft"
 										ng-model="ctrl.myData3.pupiliaryLightReflexLeft"
@@ -1440,6 +2006,30 @@
 										class="label">Not Recorded</span></label>
 								</span>
 							</div>
+							<div class="col-xs-11" ng-if="ctrl.myData6[0].pupiliaryLightReflexLeft != null" >
+									<span class="segmented"> <label><input
+											type="radio" name="radioPLeft"
+											
+											ng-checked="ctrl.myData6[0].pupiliaryLightReflexLeft == 'normal'"
+											ng-true-value="normal" value="normal" disabled><span
+											class="label">Normal</span></label> <label><input
+											type="radio" name="radioPLeft"
+											
+											ng-checked="ctrl.myData6[0].pupiliaryLightReflexLeft == 'sluggish'"
+											ng-true-value="sluggish" value="sluggish" disabled><span
+											class="label">Sluggish</span></label> <label><input
+											type="radio" name="radioPLeft"
+											
+											ng-checked="ctrl.myData6[0].pupiliaryLightReflexLeft == 'absent'"
+											ng-true-value="absent" value="absent" disabled><span
+											class="label">Absent</span></label> <label><input
+											type="radio" name="radioPLeft"
+											
+											ng-checked="ctrl.myData6[0].pupiliaryLightReflexLeft == 'cannot_access'"
+											ng-true-value="cannot_access" value="cannot_access" disabled
+											checked><span class="label">Not Recorded</span></label>
+									</span>
+								</div>
 						</div>
 					</div>
 					<div class="form-group col-xs-12">
@@ -1448,7 +2038,7 @@
 								of Pupil(mm):</label> <br> <br>
 						</div>
 						
-						<div class="col-xs-9" id="sizeOfPupil">
+						<div class="col-xs-9" id="sizeOfPupil" ng-if="ctrl.myData6[0].pupiliaryLightSizeOfPupil ==null">
 									<span class="segmented2"> <label> <input
 											type="radio" name="radioHLeft"
 											ng-model="ctrl.myData3.pupiliaryLightSizeOfPupil"
@@ -1474,7 +2064,37 @@
 											class="label">5</span>
 									</label>
 									</span>
-								</div>
+						</div>
+						<div class="col-xs-9" id="sizeOfPupil" ng-if="ctrl.myData6[0].pupiliaryLightSizeOfPupil !=null">
+								<span class="segmented2"> <label> <input
+										type="radio" name="radioHLeft"
+										
+										ng-checked="ctrl.myData6[0].pupiliaryLightSizeOfPupil == '1'"
+										ng-true-value="1" value="1" disabled><span
+										class="label">1</span>
+								</label> <label> <input type="radio" name="radioHLeft"
+										
+										ng-checked="ctrl.myData6[0].pupiliaryLightSizeOfPupil == '2'"
+										ng-true-value="2" value="2"disabled"><span
+										class="label">2</span>
+								</label> <label> <input type="radio" name="radioHLeft"
+										
+										ng-checked="ctrl.myData6[0].pupiliaryLightSizeOfPupil == '3'"
+										ng-true-value="3" value="3" disabled><span
+										class="label">3</span>
+								</label> <label> <input type="radio" name="radioHLeft"
+										
+										ng-checked="ctrl.myData6[0].pupiliaryLightSizeOfPupil == '4'"
+										ng-true-value="4" value="4" disabled><span
+										class="label">4</span>
+								</label> <label> <input type="radio" name="radioHLeft"
+										
+										ng-checked="ctrl.myData6[0].pupiliaryLightSizeOfPupil == '5'"
+										ng-true-value="5" value="5" disabled><span
+										class="label">5</span>
+								</label>
+								</span>
+							</div>
 					</div>
 				</div>
 				<div class="borders col-xs-9">
@@ -1529,8 +2149,13 @@
 												</span>
 											</div>
 										</div>
-										<div class="col-xs-2">
+										<div class="col-xs-2" ng-if="ctrl.myData8[0].motorSystemExaminationUpperRightTone==null">
 											<input type="text" id="truval" size="10" value="Not Recorded"
+												style="padding-top: 5px; border: 0; background-color: #80F876; font-weight: bold;"
+												readonly>
+										</div>
+										<div class="col-xs-2" ng-if="ctrl.myData8[0].motorSystemExaminationUpperRightTone!=null">
+											<input type="text" id="truval" size="10" value="{{ctrl.myData8[0].motorSystemExaminationUpperRightTone}}"
 												style="padding-top: 5px; border: 0; background-color: #80F876; font-weight: bold;"
 												readonly>
 										</div>
@@ -1565,8 +2190,13 @@
 												</span>
 											</div>
 										</div>
-										<div class="col-xs-2">
+										<div class="col-xs-2" ng-if="ctrl.myData8[0].motorSystemExaminationLowerRightTone==null">
 											<input type="text" id="trlval" size="10" value="Not Recorded"
+												style="padding-top: 5px; border: 0; background-color: #80F876; font-weight: bold;"
+												readonly>
+										</div>
+										<div class="col-xs-2" ng-if="ctrl.myData8[0].motorSystemExaminationLowerRightTone!=null">
+											<input type="text" id="trlval" size="10" value="{{ctrl.myData8[0].motorSystemExaminationLowerRightTone}}"
 												style="padding-top: 5px; border: 0; background-color: #80F876; font-weight: bold;"
 												readonly>
 										</div>
@@ -1605,8 +2235,13 @@
 													class="label">5</span></label>
 											</span>
 										</div>
-										<div class="col-xs-2">
+										<div class="col-xs-2" ng-if="ctrl.myData8[0].motorSystemExaminationUpperRightPower==null">
 											<input type="text" id="pruval" size="2"
+												style="padding-top: 10px; border: 0; background-color: #80F876; font-weight: bold;"
+												readonly>
+										</div>
+										<div class="col-xs-2" ng-if="ctrl.myData8[0].motorSystemExaminationUpperRightPower!=null">
+											<input type="text" id="pruval" size="2" value="{{ctrl.myData8[0].motorSystemExaminationUpperRightPower}}"
 												style="padding-top: 10px; border: 0; background-color: #80F876; font-weight: bold;"
 												readonly>
 										</div>
@@ -1639,8 +2274,13 @@
 													class="label">5</span></label>
 											</span>
 										</div>
-										<div class="col-xs-2">
+										<div class="col-xs-2" ng-if="ctrl.myData8[0].motorSystemExaminationLowerRightPower==null">
 											<input type="text" id="prlval" size="2"
+												style="padding-top: 10px; border: 0; background-color: #80F876; font-weight: bold;"
+												readonly>
+										</div>
+										<div class="col-xs-2" ng-if="ctrl.myData8[0].motorSystemExaminationLowerRightPower!=null">
+											<input type="text" id="prlval" size="2" value="{{ctrl.myData8[0].motorSystemExaminationLowerRightPower}}"
 												style="padding-top: 10px; border: 0; background-color: #80F876; font-weight: bold;"
 												readonly>
 										</div>
@@ -1684,8 +2324,13 @@
 												</span>
 											</div>
 										</div>
-										<div class="col-xs-2">
+										<div class="col-xs-2" ng-if="ctrl.myData8[0].motorSystemExaminationUpperLeftTone==null">
 											<input type="text" id="tluval" size="10" value="Not Recorded"
+												style="padding-top: 10px; border: 0; background-color: #80F876; font-weight: bold;"
+												readonly>
+										</div>
+										<div class="col-xs-2" ng-if="ctrl.myData8[0].motorSystemExaminationUpperLeftTone!=null">
+											<input type="text" id="tluval" size="10"  value="{{ctrl.myData8[0].motorSystemExaminationUpperLeftTone}}"
 												style="padding-top: 10px; border: 0; background-color: #80F876; font-weight: bold;"
 												readonly>
 										</div>
@@ -1719,8 +2364,13 @@
 												</span>
 											</div>
 										</div>
-										<div class="col-xs-2">
+										<div class="col-xs-2" ng-if="ctrl.myData8[0].motorSystemExaminationLowerLeftTone==null">
 											<input type="text" id="tllval" size="10" value="Not Recorded"
+												style="padding-top: 10px; border: 0; background-color: #80F876; font-weight: bold;"
+												readonly>
+										</div>
+										<div class="col-xs-2" ng-if="ctrl.myData8[0].motorSystemExaminationLowerLeftTone!=null">
+											<input type="text" id="tllval" size="10" value="{{ctrl.myData8[0].motorSystemExaminationLowerLeftTone}}"
 												style="padding-top: 10px; border: 0; background-color: #80F876; font-weight: bold;"
 												readonly>
 										</div>
@@ -1755,8 +2405,13 @@
 													class="label">5</span></label>
 											</span>
 										</div>
-										<div class="col-xs-2">
+										<div class="col-xs-2" ng-if="ctrl.myData8[0].motorSystemExaminationUpperLeftPower==null">
 											<input type="text" id="pluval" size="2"
+												style="padding-top: 10px; border: 0; background-color: #80F876; font-weight: bold;"
+												readonly>
+										</div>
+										<div class="col-xs-2" ng-if="ctrl.myData8[0].motorSystemExaminationUpperLeftPower!=null">
+											<input type="text" id="pluval" size="2" value="{{ctrl.myData8[0].motorSystemExaminationUpperLeftPower}}"
 												style="padding-top: 10px; border: 0; background-color: #80F876; font-weight: bold;"
 												readonly>
 										</div>
@@ -1785,8 +2440,13 @@
 													class="label">5</span></label>
 											</span>
 										</div>
-										<div class="col-xs-2">
+										<div class="col-xs-2" ng-if="ctrl.myData8[0].motorSystemExaminationLowerLeftPower==null">
 											<input type="text" id="pllval" size="2"
+												style="padding-top: 10px; border: 0; background-color: #80F876; font-weight: bold;"
+												readonly>
+										</div>
+										<div class="col-xs-2" ng-if="ctrl.myData8[0].motorSystemExaminationLowerLeftPower!=null">
+											<input type="text" id="pllval" size="2" value="{{ctrl.myData8[0].motorSystemExaminationLowerLeftPower}}"
 												style="padding-top: 10px; border: 0; background-color: #80F876; font-weight: bold;"
 												readonly>
 										</div>
@@ -1803,7 +2463,7 @@
 							style="text-align: left; margin-top: 10px;"> Neurological
 							deficits - Carnial Nerve/Limb Paralysis/Sensory
 							Loss/Bowel-Bladder involvement : </label> <br> <br>
-						<div class="container-fluid" data-ng-init="nbtnId1='nt1';">
+						<div class="container-fluid" data-ng-init="nbtnId1='nt1';" ng-if="ctrl.myData6[0].anyOtherNeurologicalDeficits==null">
 							<div style="padding-left: 400px;">
 								<button type="button" class="btn btn-info"
 									data-ng-attr-id="nbtnId1" ng-click="ctrl.showTextarea(nbtnId1)">Textarea</button>
@@ -1831,6 +2491,25 @@
 									</div>
 								</div>
 
+							</div>
+						</div>
+						<div class="container-fluid" ng-if="ctrl.myData6[0].anyOtherNeurologicalDeficits!=null">
+							<div class="col-sm-12"
+								ng-if="!ctrl.myData6[0].anyOtherNeurologicalDeficitsSketchpad;">
+								<textarea
+									ng-show="!ctrl.myData6[0].anyOtherNeurologicalDeficitsSketchpad;"
+									class="form-control" rows="5" id="other"
+									ng-model="ctrl.myData6[0].anyOtherNeurologicalDeficits"
+									placeholder="Description" style="width: 100%" readonly></textarea>
+							</div>
+							<div
+								ng-if="ctrl.myData6[0].anyOtherNeurologicalDeficitsSketchpad">
+								<div>
+									<img class="col-sm-12"
+										ng-show="ctrl.myData6[0].anyOtherNeurologicalDeficits"
+										ng-src="data:image/JPEG;base64,{{ctrl.myData6.anyOtherNeurologicalDeficits}}"
+										height="220" width="568" />
+								</div>
 							</div>
 						</div>
 					</div>
@@ -1904,7 +2583,7 @@
 				<div class="form-group ">
 					<label class="control-label col-sm-4 " style="text-align: left">Any
 						change in GCS/Neurological examination :</label>
-					<div class="col-sm-6">
+					<div class="col-sm-6" ng-if="ctrl.myData8[0].anyChangeNeurological==null">
 						<span class="segmented"> <label><input type="radio"
 								name="gcsExam" id="gcsExam1" value="1"
 								ng-model="ctrl.myData4.anyChangeNeurological"><span
@@ -1914,13 +2593,23 @@
 								class="label">No</span></label>
 						</span>
 					</div>
+					<div class="col-sm-6" ng-if="ctrl.myData8[0].anyChangeNeurological!=null">
+							<span class="segmented"> <label><input
+									type="radio" name="gcsExam" id="gcsExam1" value="1"
+									ng-checked="ctrl.myData8[0].anyChangeNeurological==1"
+									><span class="label">Yes</span></label> <label><input
+									type="radio" name="gcsExam" id="gcsExam2" value="0"
+									ng-checked="ctrl.myData8[0].anyChangeNeurological==0"
+									><span class="label">No</span></label>
+							</span>
+						</div>
 				</div>
 				<br>
 
 				<div class="form-group ">
 					<label class="control-label col-sm-5 " style="text-align: left">CT
 						scan head showed : </label>
-					<div class="container-fluid" data-ng-init="cbtnId1='ct1';">
+					<div class="container-fluid" data-ng-init="cbtnId1='ct1';" ng-if="ctrl.myData8[0].ctScanHead==null">
 						<div>
 							<button type="button" class="btn btn-info"
 								data-ng-attr-id="cbtnId1" ng-click="ctrl.showTextarea(cbtnId1)">Textarea</button>
@@ -1947,6 +2636,22 @@
 							</div>
 						</div>
 					</div>
+					<div class="container-fluid" ng-if="ctrl.myData8[0].ctScanHead!=null">
+							<div class="col-sm-12"
+								ng-if="!ctrl.myData8[0].ctScanHeadSketchPad;">
+								<textarea ng-show="!ctrl.myData8[0].ctScanHeadSketchPad;"
+									class="form-control" rows="5" id="other"
+									ng-model="ctrl.myData8[0].ctScanHead" placeholder="Description"
+									style="width: 100%"></textarea>
+							</div>
+							<div ng-if="ctrl.myData8[0].ctScanHeadSketchPad;">
+								<div>
+									<img class="col-sm-12" ng-show="ctrl.myData8[0].ctScanHead"
+										ng-src="data:image/JPEG;base64,{{ctrl.myData6.ctScanHead}}"
+										height="220" width="568" />
+								</div>
+							</div>
+						</div>
 				</div>
 
 				<div class="form-group ">
@@ -1954,7 +2659,7 @@
 						<label class="control-label col-sm-5" style="text-align: left">Other
 							relevant investigations(X-rays/MRI):</label>
 					</div>
-					<div class="container-fluid" data-ng-init="cbtnId2='ct2';">
+					<div class="container-fluid" data-ng-init="cbtnId2='ct2';" ng-if="ctrl.myData8[0].xrayDetails==null">
 						<div>
 							<button type="button" class="btn btn-info"
 								data-ng-attr-id="cbtnId2" ng-click="ctrl.showTextarea(cbtnId2)">Textarea</button>
@@ -1981,11 +2686,27 @@
 							</div>
 						</div>
 					</div>
+					<div class="container-fluid" ng-if="ctrl.myData8[0].xrayDetails!=null">
+							<div class="col-sm-12"
+								ng-if="!ctrl.myData8[0].xrayDetailsSketchPad;">
+								<textarea ng-show="!ctrl.myData8[0].xrayDetailsSketchPad;"
+									class="form-control" rows="5" id="other"
+									ng-model="ctrl.myData8[0].xrayDetails"
+									placeholder="Description" style="width: 100%"></textarea>
+							</div>
+							<div ng-if="ctrl.myData8[0].xrayDetailsSketchPad;">
+								<div>
+									<img class="col-sm-12" ng-show="ctrl.myData8[0].xrayDetails"
+										ng-src="data:image/JPEG;base64,{{ctrl.myData6.xrayDetails}}"
+										height="220" width="568" />
+								</div>
+							</div>
+						</div>
 				</div>
 				<div class="form-group ">
 					<label class="control-label col-sm-5" style="text-align: left">Management
 						Plan (in Hospital):</label>
-					<div class="container-fluid" data-ng-init="cbtnId3='ct3';">
+					<div class="container-fluid" data-ng-init="cbtnId3='ct3';" ng-if="ctrl.myData8[0].managementPlan==null">
 						<div>
 							<button type="button" class="btn btn-info "
 								data-ng-attr-id="cbtnId3" ng-click="ctrl.showTextarea(cbtnId3)">Textarea</button>
@@ -2012,12 +2733,28 @@
 							</div>
 						</div>
 					</div>
+					<div class="container-fluid" ng-if="ctrl.myData8[0].managementPlan!=null">
+							<div class="col-sm-12"
+								ng-if="!ctrl.myData8[0].managementPlanSketchPad;">
+								<textarea ng-show="!ctrl.myData8[0].managementPlanSketchPad;"
+									class="form-control" rows="5" id="other"
+									ng-model="ctrl.myData8[0].managementPlan"
+									placeholder="Description" style="width: 100%"></textarea>
+							</div>
+							<div ng-if="ctrl.myData8[0].managementPlanSketchPad;">
+								<div>
+									<img class="col-sm-12" ng-show="ctrl.myData8[0].managementPlan"
+										ng-src="data:image/JPEG;base64,{{ctrl.myData6.managementPlan}}"
+										height="220" width="568" />
+								</div>
+							</div>
+						</div>
 				</div>
 
 				<div class="form-group ">
 					<label class="control-label col-sm-5 " style="text-align: left">Course
 						in the Hospital(including repeat CT scan done, if any):</label>
-					<div class="container-fluid" data-ng-init="cbtnId4='ct4';">
+					<div class="container-fluid" data-ng-init="cbtnId4='ct4';" ng-if="ctrl.myData8[0].courseInHospital==null">
 						<div>
 							<button type="button" class="btn btn-info"
 								data-ng-attr-id="cbtnId4" ng-click="ctrl.showTextarea(cbtnId4)">Textarea</button>
@@ -2045,12 +2782,30 @@
 							</div>
 						</div>
 					</div>
+					<div class="container-fluid" ng-if="ctrl.myData8[0].courseInHospital!=null">
+							<div class="col-sm-12"
+								ng-if="!ctrl.myData8[0].courseInHospitalSketchPad;">
+								<textarea ng-show="!ctrl.myData8[0].courseInHospitalSketchPad;"
+									class="form-control" rows="5" id="other"
+									ng-model="ctrl.myData8[0].courseInHospital"
+									placeholder="Description" style="width: 100%"></textarea>
+							</div>
+							<div ng-if="ctrl.myData8[0].courseInHospitalSketchPad;">
+								<div>
+									<img class="col-sm-12"
+										ng-show="ctrl.myData8[0].courseInHospital"
+										ng-src="data:image/JPEG;base64,{{ctrl.myData6.courseInHospital}}"
+										height="220" width="568" />
+								</div>
+
+							</div>
+						</div>
 				</div>
 
 				<div class="form-group ">
 					<label class="control-label col-sm-5 " style="text-align: left">Condition
 						at Discharge:</label>
-					<div class="container-fluid " data-ng-init="cbtnId5='ct5';">
+					<div class="container-fluid " data-ng-init="cbtnId5='ct5';" ng-if="ctrl.myData8[0].conditionAtDischarge==null">
 						<div>
 							<button type="button" class="btn btn-info"
 								data-ng-attr-id="cbtnId5" ng-click="ctrl.showTextarea(cbtnId5)">Textarea</button>
@@ -2078,6 +2833,24 @@
 							</div>
 						</div>
 					</div>
+					<div class="container-fluid" ng-if="ctrl.myData8[0].conditionAtDischarge!=null">
+							<div class="col-sm-12"
+								ng-if="!ctrl.myData8[0].conditionAtDischargeSketchPad;">
+								<textarea
+									ng-show="!ctrl.myData8[0].conditionAtDischargeSketchPad;"
+									class="form-control" rows="5" id="other"
+									ng-model="ctrl.myData8[0].conditionAtDischarge"
+									placeholder="Description" style="width: 100%"></textarea>
+							</div>
+							<div ng-if="ctrl.myData8[0].conditionAtDischargeSketchPad;">
+								<div>
+									<img class="col-sm-12"
+										ng-show="ctrl.myData8[0].conditionAtDischarge"
+										ng-src="data:image/JPEG;base64,{{ctrl.myData6.conditionAtDischarge}}"
+										height="220" width="568" />
+								</div>
+							</div>
+						</div>
 				</div>
 
 				<div class="form-group " ng-controller="MyCtrl as ctrl2">

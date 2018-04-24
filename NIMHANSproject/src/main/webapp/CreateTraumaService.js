@@ -116,5 +116,44 @@
 											})
 						}
 						
+						self.getEncounterPatientDetail = function(eid) {
+							var e5 = eid;
+							var promise1 = $http.get("http://"+serverURL+"/NIMHANSproject/Services/encounterAction/getPatientEncounterDetailsById/"+e5);
+							var promise2 = promise1.then(function(response) {
+								console.log(response.data);
+								return response.data;
+							});
+							return promise2;
+						}
+						
+						self.getEncounterPhysicalExamination=function(eid){
+							var e6 = eid;
+							var promise1=$http.get("http://"+serverURL+"/NIMHANSproject/Services/encounterAction/getPhysicalEncounterById/"+e6);
+							var promise2=promise1.then(function(response){
+							console.log(response.data);
+							return response.data;
+							});
+							return promise2;
+						}
+
+						self.getEncounterNeuologicalExamination = function(eid) {
+							var e7 = eid;
+							var promise1 = $http.get("http://"+serverURL+"/NIMHANSproject/Services/encounterAction/getNeurologicalEncounterById/"+e7);
+							var promise2 = promise1.then(function(response) {
+								console.log(response.data);
+								return response.data;
+							});
+							return promise2;
+						}
+						self.getEncounterClinicalImpression=function(eid){
+							var e8 = eid;
+							var promise1=$http.get("http://"+serverURL+"/NIMHANSproject/Services/encounterAction/getClinicalEncounterById/"+e8);
+							var promise2=promise1.then(function(response){
+								console.log(response.data);
+								return response.data;
+							});
+							return promise2;
+						    }
+						
   					}); // dbDataPostSvc function call end here
 })(); // traumaservice - anonymous function call end here
